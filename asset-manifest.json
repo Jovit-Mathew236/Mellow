@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/demo/static/css/main.4f673e1a.css",
-    "main.js": "/demo/static/js/main.f0f3cfa6.js",
+    "main.css": "/demo/static/css/main.bae28c1d.css",
+    "main.js": "/demo/static/js/main.1ac3957a.js",
     "static/media/loginpic.png": "/demo/static/media/loginpic.676c29c73c1e71d435a7.png",
+    "static/media/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background 1.png": "/demo/static/media/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background 1.b34cf432704c0154040b.png",
+    "static/media/image 4.png": "/demo/static/media/image 4.f1c3038354941b121d5e.png",
+    "static/media/image 6.png": "/demo/static/media/image 6.c1d9c6641222edc4bfa4.png",
     "index.html": "/demo/index.html",
-    "main.4f673e1a.css.map": "/demo/static/css/main.4f673e1a.css.map",
-    "main.f0f3cfa6.js.map": "/demo/static/js/main.f0f3cfa6.js.map"
+    "main.bae28c1d.css.map": "/demo/static/css/main.bae28c1d.css.map",
+    "main.1ac3957a.js.map": "/demo/static/js/main.1ac3957a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f673e1a.css",
-    "static/js/main.f0f3cfa6.js"
+    "static/css/main.bae28c1d.css",
+    "static/js/main.1ac3957a.js"
   ]
 }
