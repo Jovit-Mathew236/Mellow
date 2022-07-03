@@ -81,6 +81,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .form .g-btn:hover {
     color: #1419a1;
     ;
@@ -100,6 +101,7 @@
 
 .pic-div {
     flex: 90%;
+    background-color: #c4d4d3;
 }
 
 .pic {

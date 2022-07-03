@@ -1,0 +1,112 @@
+.page {
+    padding: 30px;
+    margin-top: 150px;
+    margin-left: 50px;
+}
+
+h1 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 73px;
+
+    color: #313C61;
+}
+
+.p p {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 46px;
+
+    color: #313C61;
+}
+
+.search {
+    width: 860px;
+    height: 93px;
+    margin-top: 50px;
+    margin-left: 30px;
+    background: rgba(255, 255, 255, 0.74);
+    box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.08);
+    border-radius: 59px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 34px;
+    color: rgba(131, 144, 187, 0.46);
+    /* padding: 10px; */
+}
+
+.search input {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.search select {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 34px;
+    /* identical to box height */
+
+    text-align: right;
+
+    color: #8390BB;
+}
+
+.search button {
+    background-color: white;
+}
+
+
+.firstpic {
+    position: absolute;
+    width: 264.25px;
+    height: 162px;
+    left: 1267px;
+    top: 91px;
+
+    background: url(../images/image\ 6.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    border-radius: 133.249px;
+}
+
+.secpic {
+    position: absolute;
+    width: 264.25px;
+    height: 262px;
+    left: 1067px;
+    top: 291px;
+
+    background: url(../images/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background\ 1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 133.249px;
+}
+
+.thirdpic {
+    position: absolute;
+    width: 140px;
+    height: 141px;
+    left: 925px;
+    top: 598px;
+
+    background: url(../images/image\ 4.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 145px;
+}
