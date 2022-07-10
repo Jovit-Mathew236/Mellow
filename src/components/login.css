@@ -6,17 +6,21 @@
 .form {
     flex: 40%;
     /* margin: 30vh 20vh 50vh; */
-    margin: 20vh 10vw 15vh 15vw;
+    margin: 20vh 10vw 10vh 15vw;
     padding: 30px;
 
     background: #FFFFFF;
     box-shadow: 0px 4px 84px rgba(0, 0, 0, 0.14);
     border-radius: 9px;
+    /* font-size: 1.3em; */
 }
 
 .form h2 {
-    margin: auto;
-    width: fit-content;
+    margin: 10px 0px;
+    width: fit-content; 
+    font-weight: 500;
+    margin-left: 0px;
+    color: #313C61;
 }
 
 
@@ -28,6 +32,7 @@
     height: 40px;
     background: #F4F4F4;
     border-radius: 8px;
+    font-size: 1em;
 }
 
 .form #submit {

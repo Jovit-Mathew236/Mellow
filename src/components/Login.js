@@ -18,7 +18,7 @@ function Login() {
         <div>
             <div className="head">
                 <div className="form">
-                    <form autoComplete='off'>
+                    <form autoComplete='off' action='/onboarding' method='NONE'>
                         <div className='form-inp-field'>
                             <h2>Login</h2>
 
@@ -39,7 +39,7 @@ function Login() {
                         <button className="g-btn"><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
-                    <p className='signup-p'>New to the platform? <a className='signup-link' href="www.google.com">Sign Up</a> Now</p>
+                    <p className='signup-p'>New to the platform? <a className='signup-link' href="/">Sign Up</a> Now</p>
 
                 </div>
 
