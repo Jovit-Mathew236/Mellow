@@ -73,10 +73,10 @@ h1 {
 
 .firstpic {
     position: absolute;
-    width: 264.25px;
-    height: 162px;
-    left: 1267px;
-    top: 91px;
+    width: 14.25vw;
+    height: 12vw;
+    right: 0px;
+    top: 5vh;
 
     background: url(../images/image\ 6.png);
     background-repeat: no-repeat;
@@ -87,10 +87,10 @@ h1 {
 
 .secpic {
     position: absolute;
-    width: 264.25px;
-    height: 262px;
-    left: 1067px;
-    top: 291px;
+    width: 18.25vw;
+    height: 32vw;
+    right: 210px;
+    top: 35vh;
 
     background: url(../images/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background\ 1.png);
     background-repeat: no-repeat;
@@ -100,10 +100,10 @@ h1 {
 
 .thirdpic {
     position: absolute;
-    width: 140px;
-    height: 141px;
-    left: 925px;
-    top: 598px;
+    width: 10vw;
+    height: 11vw;
+    right: 510px;
+    top: 75vh;
 
     background: url(../images/image\ 4.png);
     background-repeat: no-repeat;
