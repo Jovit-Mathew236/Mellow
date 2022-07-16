@@ -8,7 +8,7 @@
     /* margin: 30vh 20vh 50vh; */
     margin: 20vh 10vw 10vh 15vw;
     padding: 30px;
-
+    height: min-content;
     background: #FFFFFF;
     box-shadow: 0px 4px 84px rgba(0, 0, 0, 0.14);
     border-radius: 9px;
@@ -115,4 +115,21 @@
     background-repeat: no-repeat;
     height: 100vh;
     background-position: right;
+}
+/* Sign Up */
+
+.signup-pic-div{
+    flex: 90%;
+    background-image: linear-gradient(6deg, #1419a1, #575ce5);
+}
+.signup-pic-div .box{
+    padding: 16.276vw 11.719vw;
+    color: white;
+}
+
+.signup-pic-div .box h1{
+    color: white;
+}
+.signup-pic-div span{
+    color: aqua;
 }

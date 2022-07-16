@@ -1,5 +1,68 @@
+/* Main intro section */
+.main-page-one {
+    height: 100vh;
+    width: 100vw;
+    background: url(../images/main-bg.png), linear-gradient(90deg, #e3e6ec 0%, #dce7fd 48.44%, #dce7fd 100%);
+    /* background-image: url(../images/main-bg.png); */
+    /* background-position: center; */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
+.nav-bar {
+    width: 100%;
+}
 
+.nav-bar button {
+    margin: 20px 20px 20px 85vw;
+    font-size: medium;
+    background-image: linear-gradient(45deg, #1419a1, #575ce5);
+    height: 40px;
+    min-width: 100px;
+    width: auto;
+    padding: 5px 20px;
+    border-radius: 30px;
+    color: white;
+}
+
+.intro-header {
+    margin: 0vh 4.557vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.intro-header span {
+    color: #575CE5;
+}
+
+.btns-introsection {
+    display: flex;
+    width: 23.997vw;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btns-introsection button {
+    background-color: #575CE5;
+    padding: 10px 20px;
+    width: 160px;
+    border-radius: 30px;
+    color: white;
+}
+
+.pic-main-intro .picture {
+    background-image: url(../images/model\ intro\ page.png);
+    width: 489.94px;
+    height: 691px;
+    transform: scale(.675vh);
+}
+/* why us page  */
+
+.why-us-page{
+    height: 100vh;
+    width: 100vw;
+}
 /* Footer */
 
 .footer {
@@ -14,6 +77,7 @@
     padding: 40px 90px;
     display: flex;
     justify-content: space-between;
+    font-size:small;
 }
 
 .footer-about {
@@ -33,7 +97,7 @@
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 21px;
+    font-size: 19px;
     line-height: 27px;
     letter-spacing: -0.045em;
 

@@ -6,11 +6,12 @@
   outline: none;
   border: none;
 }
-body {
+html,body {
   margin: 0;
   font-family: 'DM Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden
 }
 
 code {
