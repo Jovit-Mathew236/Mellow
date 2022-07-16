@@ -70,7 +70,7 @@ function Login() {
                         <button className="g-btn"><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
-                    <p className='signup-p'>New to the platform? <a className='signup-link' href="/demo/signup">Sign Up</a> Now</p>
+                    <p className='signup-p'>New to the platform? <a className='signup-link' href="/signup">Sign Up</a> Now</p>
 
                 </div>
 

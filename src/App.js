@@ -20,14 +20,14 @@ function App() {
     <div>
       <p className='logo-img'>  </p>
 
-      <BrowserRouter basename='/demo'>
+      <BrowserRouter basename='/'>
         {/* <div>
         <img src="./images/logomellow.png" alt="" style="position: absolute;width: 186px;height: 98px;left: 141px;top: 8px;" />
       </div> */}
         <Routes>
           <Route path='/login' element={<div><Login /></div>} />
           <Route path='/onboarding' element={<div><Onboarding /></div>} />
-          <Route path='/demo' element={<div><Home /> </div>} />
+          <Route path='/' element={<div><Home /> </div>} />
           <Route path='/signup' element={<div><Signup /> </div>} />
         </Routes>
       </BrowserRouter></div>

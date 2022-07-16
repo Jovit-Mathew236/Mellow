@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Arrow from '../assets/Arrow'
 import Facebook from '../assets/icons/Facebook'
 import Linkedin from '../assets/icons/Linkedin'
 import Twitter from '../assets/icons/Twitter'
-import { AuthContext } from '../store/Contexts'
+import { AuthContext, FirebaseContext } from '../store/Contexts'
 import './home.css'
 
 function Home() {
+    const { firebase } = useContext(FirebaseContext)
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     // const test = user ? user.displayName : 'not worked'
     // console.log(test);
     return (
@@ -14,8 +18,19 @@ function Home() {
             {/* Main intro section */}
             <div className="main-page-one">
                 <div className="nav-bar">
-                    <button>{user ? 'Welcome ' + user.displayName : 'Login'}</button>
+                    <button onClick={() => navigate('/login')}>{user ? 'Welcome ' + user.displayName : 'Login'} </button>
+                    {user ? <div className='logout-btn'>
+                        <p className='dropdown'><Arrow /> </p>
+                        <div className="dropdown-content">
+                            <p onClick={() => {
+                                firebase.auth().signOut()
+                            }}>LogOut</p>
+                        </div>
+                    </div> : null}
                 </div>
+                {/* <div className="dropdown-content">
+                    <p>LogOut</p>
+                </div> */}
                 <div className="intro-header">
                     <div>
                         <h1>BEST <span>HIRING</span> <br /> PLATFORM</h1>
@@ -38,7 +53,63 @@ function Home() {
 
             {/* Why us page  */}
             <div className="why-us-page">
+                <div className="div-container-flex">
+                    <div className="content-why-us">
+                        <h1>WHY US</h1> <br />
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+                        <br /><br />
+                        <ul>
+                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
+                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
+                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
+                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
+                        </ul>
+                        <br /><br />
+                        <div className="data">
+                            <div className="artists">
+                                <h3>10K+</h3>
+                                <p>Total Artists</p>
+                            </div>
+                            <div className="project">
+                                <h3>3K</h3>
+                                <p>Complete Project</p>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <button>Hire Now</button>
+                    </div>
 
+                    <div className="box-why-us">
+                        <div className='box-sec-one'>
+                            <div className="box">
+                                <p className="box-img-odd"></p>
+                                <h2>doloremque </h2>
+                                <p>tis unde omnis iste natus error sit voluptatem</p>
+                                <p className="view-btn">view more</p>
+                            </div>
+                            <div className="box box-even">
+                                <p className="box-img"></p>
+                                <h2>doloremque </h2>
+                                <p>tis unde omnis iste natus error sit voluptatem</p>
+                                <p className="view-btn">view more</p>
+                            </div>
+                        </div>
+                        <div className='box-sec-two'>
+                            <div className="box box-even">
+                                <p className="box-img"></p>
+                                <h2>doloremque </h2>
+                                <p>tis unde omnis iste natus error sit voluptatem</p>
+                                <p className="view-btn">view more</p>
+                            </div>
+                            <div className="box">
+                                <p className="box-img-odd"></p>
+                                <h2>doloremque </h2>
+                                <p>tis unde omnis iste natus error sit voluptatem</p>
+                                <p className="view-btn">view more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {/* Footer */}
             <div className="footer">

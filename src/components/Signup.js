@@ -76,7 +76,7 @@ function Signup() {
                         <button className="g-btn"><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
-                    <p className='signup-p'>Already have an account? <a className='signup-link' href="/demo/login">Log In</a> Now</p>
+                    <p className='signup-p'>Already have an account? <a className='signup-link' href="/login">Log In</a> Now</p>
 
                 </div>
 
