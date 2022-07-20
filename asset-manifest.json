@@ -1,9 +1,9 @@
 {
-  "main.css": "demo/static/css/main.cd588be2.chunk.css",
-  "main.js": "demo/static/js/main.86a81b91.chunk.js",
-  "main.js.map": "demo/static/js/main.86a81b91.chunk.js.map",
-  "static/js/1.3b3f8449.chunk.js": "demo/static/js/1.3b3f8449.chunk.js",
-  "static/js/1.3b3f8449.chunk.js.map": "demo/static/js/1.3b3f8449.chunk.js.map",
+  "main.css": "demo/static/css/main.e1893a23.chunk.css",
+  "main.js": "demo/static/js/main.84a2f3c9.chunk.js",
+  "main.js.map": "demo/static/js/main.84a2f3c9.chunk.js.map",
+  "static/js/1.21a3d8f3.chunk.js": "demo/static/js/1.21a3d8f3.chunk.js",
+  "static/js/1.21a3d8f3.chunk.js.map": "demo/static/js/1.21a3d8f3.chunk.js.map",
   "runtime~main.js": "demo/static/js/runtime~main.4c493a14.js",
   "runtime~main.js.map": "demo/static/js/runtime~main.4c493a14.js.map",
   "static/media/login.css": "demo/static/media/loginpic.0d90c2a0.png",
@@ -13,8 +13,8 @@
   "static/media/demoprofile.jpeg": "demo/static/media/demoprofile.7d496296.jpeg",
   "static/media/home.css": "demo/static/media/main-bg.0e46362f.png",
   "static/media/artistreg.css": "demo/static/media/aristreg pic.d3d3f612.png",
-  "static/css/main.cd588be2.chunk.css.map": "demo/static/css/main.cd588be2.chunk.css.map",
+  "static/css/main.e1893a23.chunk.css.map": "demo/static/css/main.e1893a23.chunk.css.map",
   "index.html": "demo/index.html",
-  "precache-manifest.6af4f2c132cf1d3cdd6e7cd2bcd671c2.js": "demo/precache-manifest.6af4f2c132cf1d3cdd6e7cd2bcd671c2.js",
+  "precache-manifest.a45f139dc412195a09d4d6d7dc411d9e.js": "demo/precache-manifest.a45f139dc412195a09d4d6d7dc411d9e.js",
   "service-worker.js": "demo/service-worker.js"
 }

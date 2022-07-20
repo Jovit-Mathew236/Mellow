@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "86a81b919b8e58edcac6",
-    "url": "demo/static/css/main.cd588be2.chunk.css"
+    "revision": "84a2f3c94b17a1fb86e1",
+    "url": "demo/static/css/main.e1893a23.chunk.css"
   },
   {
-    "revision": "86a81b919b8e58edcac6",
-    "url": "demo/static/js/main.86a81b91.chunk.js"
+    "revision": "84a2f3c94b17a1fb86e1",
+    "url": "demo/static/js/main.84a2f3c9.chunk.js"
   },
   {
-    "revision": "3b3f8449a471f8d3d019",
-    "url": "demo/static/js/1.3b3f8449.chunk.js"
+    "revision": "21a3d8f3c3bb9d45383c",
+    "url": "demo/static/js/1.21a3d8f3.chunk.js"
   },
   {
     "revision": "4c493a14e9dfb8b6631e",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "demo/static/media/aristreg pic.d3d3f612.png"
   },
   {
-    "revision": "ff904ceacb1c84e3151bc18c32116e2f",
+    "revision": "d3c64e9357e5aeeaaf5b5cb948574e03",
     "url": "demo/index.html"
   }
 ];
