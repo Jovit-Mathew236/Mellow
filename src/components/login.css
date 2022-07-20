@@ -1,6 +1,7 @@
 .head {
     display: flex;
     height: 100vh;
+    align-items: center;
 }
 
 .form {
@@ -26,7 +27,7 @@
 
 
 .form input {
-    padding: 8px;
+    padding: 4px 8px;
     margin: 20px 0px;
     width: 95.5%;
     height: 40px;
@@ -120,6 +121,7 @@
 
 .signup-pic-div{
     flex: 90%;
+    height: 100%;
     background-image: linear-gradient(6deg, #1419a1, #575ce5);
 }
 .signup-pic-div .box{

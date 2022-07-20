@@ -33,12 +33,12 @@ function Signup() {
                     <form autoComplete='off' action='/onboarding' method='NONE'>
                         <div className='form-inp-field'>
                             <h2>Sign Up</h2>
-                            <label> User name:</label><br />
-                            <input type="text" name="name" placeholder='Name' required onChange={(e) => setName(e.target.value)} value={name} /><br />
-                            <label> Email:</label><br />
-                            <input type="email" name="name" placeholder='yourname@gmail.com' required onChange={(e) => setEmail(e.target.value)} value={email} /><br />
-                            <label> Password:</label><br />
-                            <input type="password" name="name" placeholder='password' required onChange={(e) => setPassword(e.target.value)} value={password} /><br />
+                            <label> User name:</label>
+                            <input type="text" name="name" placeholder='username' required onChange={(e) => setName(e.target.value)} value={name} />
+                            <label> Email:</label>
+                            <input type="email" name="name" placeholder='yourname@gmail.com' required onChange={(e) => setEmail(e.target.value)} value={email} />
+                            <label> Password:</label>
+                            <input type="password" name="name" placeholder='password' required onChange={(e) => setPassword(e.target.value)} value={password} />
 
                             <input type="submit" value="SignUp" id='submit' onClick={(e) => {
                                 e.preventDefault()

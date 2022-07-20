@@ -1,3 +1,18 @@
+.nav {
+    height: 80px;
+    width: 94%;
+    display: flex;
+    padding: 20px 50px;
+    justify-content: flex-end;
+    box-shadow: 0px 2px 20px 0px #acacac;
+}
+
+.nav img {
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 1px rgb(0 140 186 / 50%);
+}
+
 .page {
     padding: 30px;
     margin-top: 150px;
@@ -26,22 +41,22 @@ h1 {
 
 .search {
     width: 860px;
-    height: 93px;
+    height: 80px;
     margin-top: 50px;
     margin-left: 30px;
     background: rgba(255, 255, 255, 0.74);
     box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.08);
     border-radius: 59px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 ::-webkit-input-placeholder {
     font-family: 'DM Sans';
     font-style: normal;
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 34px;
+    /* font-weight: 500; */
+    font-size: 17px;
+    /* line-height: 34px; */
     color: rgba(131, 144, 187, 0.46);
     /* padding: 10px; */
 }
@@ -60,8 +75,7 @@ h1 {
     font-size: 26px;
     line-height: 34px;
     /* identical to box height */
-
-    text-align: right;
+    text-align: left;
 
     color: #8390BB;
 }
@@ -109,4 +123,62 @@ h1 {
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 145px;
+}
+
+.artists-infos {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
+.artists-infos .artist-row {
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+    height: 400px;
+    margin: 20px 0px;
+}
+
+.artists-infos .artist-row .artist {
+    width: 20%;
+    padding: 20px;
+    margin: 0px 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 14px 1px #d7d7d7e0;
+}
+
+.artists-infos .artist-row .artist .artist-bg-img {
+    height: 200px;
+    width: 100%;
+    background-size: contain;
+    border-radius: 10px;
+}
+
+.artists-infos .artist-row .artist .artist-avathar {
+    width: 40%;
+    background-size: contain;
+    border-radius: 50%;
+    border: 10px solid white;
+}
+
+.artists-infos .artist-row .artist .imgs {
+    /* background-image: url(/static/media/demobg1.cc5791e0.jpg); */
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artists-infos .artist-row .artist .artist-info-content {
+    margin: 30px 0px;
+    color: #8390BB;
+    height: 35%;
+    line-height: 30px;
+
+}
+.artists-infos .artist-row .artist .artist-info-content p{
+    font-size: 15px;
 }

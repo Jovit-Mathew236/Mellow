@@ -41,8 +41,8 @@ function Home() {
                             PageTraffic is the perfect choice.
                         </p> <br /> <br />
                         <div className="btns-introsection">
-                            <button>I want an artist</button>
-                            <button>I’m an artist</button>
+                            <button onClick={()=>navigate('/onboarding')}>I want an artist</button>
+                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/login')}}>I’m an artist</button>
                         </div>
                     </div>
                     <div className="pic-main-intro">
@@ -127,10 +127,10 @@ function Home() {
                     <div className="sitemap">
                         <h1>Sitemap</h1>
                         <ol>
-                            <li><a href="https://">Home</a></li>
-                            <li><a href="https://">About</a></li>
-                            <li><a href="demo/login">Login</a></li>
-                            <li><a href="https://">Contact</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ol>
                     </div>
                     <div className="terms">

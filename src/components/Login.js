@@ -29,9 +29,9 @@ function Login() {
                         <div className='form-inp-field'>
                             <h2>Login</h2>
 
-                            <label> Email:</label><br />
+                            <label> Email</label><br />
                             <input type="email" name="name" placeholder='yourname@gmail.com' required onChange={(e) => setEmail(e.target.value)} value={email} /><br />
-                            <label> Password:</label><br />
+                            <label> Password</label><br />
                             <input type="password" name="name" placeholder='password' required onChange={(e) => setPassword(e.target.value)} value={password} /><br />
 
                             <input type="submit" value="Login" id='submit' onClick={(e) => {

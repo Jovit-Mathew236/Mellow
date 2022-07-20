@@ -1,0 +1,83 @@
+.artist-reg {
+    background: url(../images/aristreg\ pic.png), rgba(87, 92, 229, 0.04);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 70vw;
+}
+
+.filter {
+    height: 100vh;
+    width: 70vw;
+    backdrop-filter: blur(20px);
+}
+
+.artistreg-content {
+    display: flex;
+    height: 100%;
+    width: 100vw;
+    align-items: center;
+}
+
+.artistreg-content .artistreg-intro {
+    height: 50vh;
+    width: 20vw;
+    margin-left: 7.323vw;
+    color: white;
+    margin-top: -30vh;
+}
+
+.artistreg-content .artistreg-intro h1 {
+    color: white;
+    font-size: 3em;
+    line-height: 50px;
+}
+
+.artistreg-content .artistreg-intro p {
+    font-size: 20px;
+}
+
+.artist-reg-form {
+    background-color: white;
+    height: 70vh;
+    width: 35vw;
+    border-radius: 5px;
+    margin-left: 25vw;
+    box-shadow: 0px 4px 84px rgb(0 0 0 / 14%);
+    backdrop-filter: blur(110px);
+}
+
+.artist-reg-form .form-input-filed {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.artist-reg-form .form-fields {
+    height: 100%;
+}
+
+.artist-reg-form form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.artist-reg-form form input {
+    padding: 4px 8px;
+    margin: 20px 0px;
+    width: 95.5%;
+    height: 40px;
+    background: #F4F4F4;
+    border-radius: 8px;
+    font-size: 1em;
+}
+.artist-reg-form form button {
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    height: 50px;
+    background: #575CE5;
+    border-radius: 8px;
+    color: white;
+}

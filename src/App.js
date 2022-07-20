@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Onboarding from './components/Onboarding';
 import Home from './components/Home';
 import Signup from './components/Signup';
+import Artistreg from './components/Artistreg';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
@@ -29,6 +30,7 @@ function App() {
           <Route path='/onboarding' element={<div><Onboarding /></div>} />
           <Route path='/' element={<div><Home /> </div>} />
           <Route path='/signup' element={<div><Signup /> </div>} />
+          <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
         </Routes>
       </BrowserRouter></div>
   );
