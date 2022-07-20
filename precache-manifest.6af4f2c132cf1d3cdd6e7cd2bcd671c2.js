@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "ae6c0258856bbae0efb6",
-    "url": "demo/static/css/main.8de084f0.chunk.css"
+    "revision": "86a81b919b8e58edcac6",
+    "url": "demo/static/css/main.cd588be2.chunk.css"
   },
   {
-    "revision": "ae6c0258856bbae0efb6",
-    "url": "demo/static/js/main.ae6c0258.chunk.js"
+    "revision": "86a81b919b8e58edcac6",
+    "url": "demo/static/js/main.86a81b91.chunk.js"
   },
   {
-    "revision": "50092a2463a1ff3ec0e3",
-    "url": "demo/static/js/1.50092a24.chunk.js"
+    "revision": "3b3f8449a471f8d3d019",
+    "url": "demo/static/js/1.3b3f8449.chunk.js"
   },
   {
     "revision": "4c493a14e9dfb8b6631e",
@@ -28,12 +28,20 @@ self.__precacheManifest = [
     "url": "demo/static/media/image 6.af2c8a92.png"
   },
   {
+    "revision": "4bc177976f12ee10de2863c51685bfbb",
+    "url": "demo/static/media/image 4.4bc17797.png"
+  },
+  {
     "revision": "9a05295b7f0d21b9af4a345bb1c33ffd",
     "url": "demo/static/media/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background 1.9a05295b.png"
   },
   {
-    "revision": "4bc177976f12ee10de2863c51685bfbb",
-    "url": "demo/static/media/image 4.4bc17797.png"
+    "revision": "cc5791e0f6a8248364d54f352e869e8d",
+    "url": "demo/static/media/demobg1.cc5791e0.jpg"
+  },
+  {
+    "revision": "7d4962966ae89a5b2301ae1cb65e5f85",
+    "url": "demo/static/media/demoprofile.7d496296.jpeg"
   },
   {
     "revision": "70607aece8438aa6fa3ad240b959383d",
@@ -44,7 +52,11 @@ self.__precacheManifest = [
     "url": "demo/static/media/main-bg.0e46362f.png"
   },
   {
-    "revision": "db7269a7f97629d649f3e2dcd20741e3",
+    "revision": "d3d3f6129b682c295b17759c4f049a3f",
+    "url": "demo/static/media/aristreg pic.d3d3f612.png"
+  },
+  {
+    "revision": "ff904ceacb1c84e3151bc18c32116e2f",
     "url": "demo/index.html"
   }
 ];
