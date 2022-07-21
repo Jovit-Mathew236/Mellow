@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
-// import { Firebase as firebase } from '../firebase/config';
+import { Firebase } from '../firebase/config';
 import { FirebaseContext } from '../store/Contexts'
 import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert';
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/compat/auth';
 import "./login.css"
 
 const ColoredLine = ({ color, width }) => (
@@ -26,6 +27,7 @@ function Signup() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
+    var provider = new Firebase.auth.GoogleAuthProvider()
     return (
         <div>
             <div className="head">
@@ -44,11 +46,12 @@ function Signup() {
                                 e.preventDefault()
                                 firebase.auth().createUserWithEmailAndPassword(email, password)
                                     .then((result) => {
-                                        console.log('Sucses');
+                                        console.log('Success');
                                         result.user.updateProfile({ displayName: name }).then(() => {
                                             firebase.firestore().collection('user').add({
                                                 id: result.user.uid,
-                                                username: name
+                                                username: name,
+                                                email:email
                                             }).then(() => {
                                                 swal("Good job!", "You successfully Sign uped😋!", "success");
                                                 navigate('/login')
@@ -73,7 +76,23 @@ function Signup() {
                     </div>
 
                     <div className="g-btn-div">
-                        <button className="g-btn"><p className='g-logo'></p>Continue with Google</button>
+                        <button className="g-btn" onClick={() => {
+                            firebase.auth().signInWithPopup(provider).then((result) => {
+                                console.log("success");
+                                firebase.firestore().collection('user').add({
+                                    id: result.user.uid,
+                                    username: result.user.displayName,
+                                    email: result.user.email,
+                                    profilePic:result.user.photoURL
+                                }).then(() => {
+                                    swal("Good job!", "You successfully Sign uped😋!", "success");
+                                    navigate('/')
+                                })
+                            }).catch((error) => {
+                                var errorMessage = error.message;
+                                console.log(errorMessage);
+                            });
+                        }}><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
                     <p className='signup-p'>Already have an account? <a className='signup-link' href="/login">Log In</a> Now</p>

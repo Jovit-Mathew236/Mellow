@@ -24,11 +24,11 @@ function Onboarding() {
             setInfo(alldocs)
         })
     }, [firebase])
-    // console.log(info);
+    // console.log(user.photoURL);
     return (
         <div>
             <div className="nav">
-                <img src={user ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+                <img src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
             </div>
             <div className="page">
                 <div className="p">
@@ -76,7 +76,7 @@ function Onboarding() {
                         }
                         return null
                     }).map((info, index) => {
-
+                        // console.log(info);
                         return (
                             <div key={index} className="artist">
                                 <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>

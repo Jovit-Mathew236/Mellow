@@ -1,4 +1,6 @@
 /* Main intro section */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 .main-page-one {
     height: 100vh;
     width: 100vw;
@@ -19,7 +21,9 @@
 .nav-bar button {
     margin: 0px 2vw 0px 0px;
     font-size: medium;
-    background-image: linear-gradient(45deg, #1419a1, #575ce5);
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(45deg, #1419a1, #2a31fe);
     height: 40px;
     min-width: 100px;
     width: auto;
@@ -27,12 +31,19 @@
     border-radius: 30px;
     color: white;
     transition: transfrom .5s;
+    font-family: 'DM Sans';
 }
 
 .nav-bar button:hover {
     transform: scale(.98);
 }
-
+.nav-bar button p{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0px 12px 0px -15px;
+    background-size: contain;
+}
 .logout-btn {
     display: flex;
     flex-direction: column;
@@ -42,16 +53,17 @@
 .dropdown {
     margin: 0px 30px 0px 0px;
     font-size: medium;
-    background-image: linear-gradient(45deg, #1419a1, #575ce5);
-    height: 30px;
+    background-image: linear-gradient(45deg, #2a31fe, #2a31fe);
+    height: 41px;
     /* min-width: 80px; */
-    width: 10px;
+    width: 41px;
     display: flex;
-    padding: 5px 20px;
-    border-radius: 30px;
+    /* padding: 5px 1px; */
+    border-radius: 50px;
     /* color: white; */
     transition: transform 1s;
     align-items: center;
+    justify-content: center;
 }
 
 .logout-btn:hover .dropdown-content {
@@ -68,11 +80,12 @@
 }
 
 .dropdown-content p {
-    padding: 20px;
+    padding: 10px 20px;
     background-color: aliceblue;
     border-radius: 5px;
     margin-top: -5px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .dropdown-content p:hover {

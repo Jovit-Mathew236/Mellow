@@ -17,6 +17,7 @@ function Artistreg() {
     const [contact, setContact] = useState('')
     const [address, setAddress] = useState('')
     const [workExp, setWorkExp] = useState('')
+    const [disply, setDisply] = useState("none")
 
     const date = new Date()
     return (
@@ -35,7 +36,7 @@ function Artistreg() {
                         </div>
                         <div className="artist-reg-form">
                             <div className="form-fields">
-                                <form>
+                                <form style={disply === "none" ? { display: "flex" } : { display: "none" }}>
                                     <div className='form-input-filed'>
                                         <div>
                                             <label> Name</label><br />
@@ -66,28 +67,29 @@ function Artistreg() {
                                             <input type="text" name="name" placeholder='Enter no. of years' required onChange={(e) => setWorkExp(e.target.value)} value={workExp} /><br />
                                             <div></div>
                                             <button onClick={(e) => {
-                                                if (name !== ''&& location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
-                                                    e.preventDefault()
-                                                    user ? firebase.firestore().collection('Artist-info').add({
-                                                        Name: name,
-                                                        Location: location,
-                                                        Expertise: expertise,
-                                                        Contact: contact,
-                                                        Address: address,
-                                                        WorkExperience: workExp,
-                                                        CreatedDate: date.toDateString(),
-                                                        userId: user.uid
-                                                    }).catch((error) => {
-                                                        console.log(error.message);
-                                                    }).then(()=>{
-                                                        swal("Good job!", "You successfully  Submited😋!", "success");
-                                                        navigate('/onboarding')
-                                                    }) : navigate('/login')
-                                                }else{
-                                                    alert('Fill all the filed')
-                                                }
+                                                // if (name !== ''&& location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
+                                                e.preventDefault()
+                                                //     user ? firebase.firestore().collection('Artist-info').add({
+                                                //         Name: name,
+                                                //         Location: location,
+                                                //         Expertise: expertise,
+                                                //         Contact: contact,
+                                                //         Address: address,
+                                                //         WorkExperience: workExp,
+                                                //         CreatedDate: date.toDateString(),
+                                                //         userId: user.uid
+                                                //     }).catch((error) => {
+                                                //         console.log(error.message);
+                                                //     }).then(()=>{
+                                                //         swal("Good job!", "You successfully  Submited😋!", "success");
+                                                //         navigate('/onboarding')
+                                                //     }) : navigate('/login')
+                                                // }else{
+                                                //     alert('Fill all the filed')
+                                                // }
+                                                setDisply(disply === "none" ? "block" : "none")
 
-                                            }}>Submit</button>
+                                            }}>Next</button>
                                         </div>
                                     </div>
                                     {/* <div className="form-input-filed">
@@ -95,6 +97,68 @@ function Artistreg() {
                                         <button>Next</button>
                                     </div> */}
                                 </form>
+
+
+                                <form style={disply === "none" ? { display: "none" } : { display: "flex" }}>
+                                    <div className='form-input-filed'>
+                                        <div>
+                                            <label> Your Bio</label><br />
+                                            <textarea name="bio" id="bio" placeholder='Enter Name' required onChange={(e) => setName(e.target.value)} value={name}></textarea>
+                                        </div>
+                                    </div>
+                                    <div className='form-input-filed'>
+                                        <div>
+                                            <label> Add your photos of work</label><br />
+                                            <br />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                        </div>
+                                        <div>
+                                        <br /><br />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                        </div>
+                                    </div>
+                                    <div className='form-input-filed'>
+                                        <div>
+                                            <br /><br />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                        </div>
+                                        <div>
+                                        <br /><br />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                            <div></div>
+
+                                        </div>
+
+                                    </div>
+                                    <button style={{width: "90%" ,margin: "0px auto"}} onClick={(e) => {
+                                        if (name !== '' && location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
+                                            e.preventDefault()
+                                            user ? firebase.firestore().collection('Artist-info').add({
+                                                Name: name,
+                                                Location: location,
+                                                Expertise: expertise,
+                                                Contact: contact,
+                                                Address: address,
+                                                WorkExperience: workExp,
+                                                CreatedDate: date.toDateString(),
+                                                userId: user.uid
+                                            }).catch((error) => {
+                                                console.log(error.message);
+                                            }).then(() => {
+                                                swal("Good job!", "You successfully  Submited😋!", "success");
+                                                navigate('/onboarding')
+                                            }) : navigate('/login')
+                                        } else {
+                                            alert('Fill all the filed')
+                                        }
+
+                                    }}>Submit</button>
+                                    {/* <div className="form-input-filed">
+                                        <div></div>
+                                        <button>Next</button>
+                                    </div> */}
+                                </form>
+
                             </div>
                         </div>
                     </div>

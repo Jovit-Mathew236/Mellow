@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
-import { FirebaseContext } from '../store/Contexts'
+import { AuthContext, FirebaseContext } from '../store/Contexts'
+import { Firebase } from '../firebase/config';
 import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert';
 import "./login.css"
@@ -21,6 +22,8 @@ function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    var provider = new Firebase.auth.GoogleAuthProvider()
+    const { userStatus } = useContext(AuthContext)
     return (
         <div>
             <div className="head">
@@ -37,7 +40,7 @@ function Login() {
                             <input type="submit" value="Login" id='submit' onClick={(e) => {
                                 e.preventDefault()
                                 firebase.auth().signInWithEmailAndPassword(email, password)
-                                    .then((result) => {
+                                    .then(() => {
                                         console.log('Succsses');
                                         // result.user.updateProfile({displayName:name}).then(()=>{
                                         //     firebase.firestore().collection('user').add({
@@ -45,7 +48,7 @@ function Login() {
                                         //         username:name
                                         //     }).then(()=>{
                                         swal("Good job!", "You successfully  Logined😋!", "success");
-                                        navigate('/')
+                                        userStatus === 'Employer' ? navigate('/onboarding') : navigate('/artistregistration')
                                         // })
                                         // })
                                         // Signed in 
@@ -67,7 +70,16 @@ function Login() {
                     </div>
 
                     <div className="g-btn-div">
-                        <button className="g-btn"><p className='g-logo'></p>Continue with Google</button>
+                        <button className="g-btn" onClick={() => {
+                            firebase.auth().signInWithPopup(provider).then(() => {
+                                console.log("success");
+                                swal("Good job!", "You successfully  Logined😋!", "success");
+                                userStatus === 'Employer' ? navigate('/onboarding') : navigate('/artistregistration')
+                            }).catch((error) => {
+                                var errorMessage = error.message;
+                                console.log(errorMessage);
+                            });
+                        }}><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
                     <p className='signup-p'>New to the platform? <a className='signup-link' href="/signup">Sign Up</a> Now</p>

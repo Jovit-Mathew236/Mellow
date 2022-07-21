@@ -1,15 +1,16 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Arrow from '../assets/Arrow'
+// import Arrow from '../assets/Arrow'
 import Facebook from '../assets/icons/Facebook'
 import Linkedin from '../assets/icons/Linkedin'
+import SignOut from '../assets/icons/SignOut'
 import Twitter from '../assets/icons/Twitter'
 import { AuthContext, FirebaseContext } from '../store/Contexts'
 import './home.css'
 
 function Home() {
     const { firebase } = useContext(FirebaseContext)
-    const { user } = useContext(AuthContext)
+    const { user,setUserStatus } = useContext(AuthContext)
     const navigate = useNavigate()
     // const test = user ? user.displayName : 'not worked'
     // console.log(test);
@@ -18,9 +19,9 @@ function Home() {
             {/* Main intro section */}
             <div className="main-page-one">
                 <div className="nav-bar">
-                    <button onClick={() => navigate('/login')}>{user ? 'Welcome ' + user.displayName : 'Login'} </button>
+                    <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/login')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>
                     {user ? <div className='logout-btn'>
-                        <p className='dropdown'><Arrow /> </p>
+                        <p className='dropdown'><SignOut/> </p>
                         <div className="dropdown-content">
                             <p onClick={() => {
                                 firebase.auth().signOut()
@@ -41,8 +42,8 @@ function Home() {
                             PageTraffic is the perfect choice.
                         </p> <br /> <br />
                         <div className="btns-introsection">
-                            <button onClick={()=>navigate('/onboarding')}>I want an artist</button>
-                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/login')}}>I’m an artist</button>
+                            <button onClick={()=>{navigate('/onboarding'); setUserStatus('Employer')}}>I want an artist</button>
+                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/login') ; setUserStatus('Participent')}}>I’m an artist</button>
                         </div>
                     </div>
                     <div className="pic-main-intro">

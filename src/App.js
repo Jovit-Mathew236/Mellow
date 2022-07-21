@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, {useEffect,useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { AuthContext, FirebaseContext } from './store/Contexts'
 
 import Login from './components/Login';
@@ -8,18 +8,20 @@ import Onboarding from './components/Onboarding';
 import Home from './components/Home';
 import Signup from './components/Signup';
 import Artistreg from './components/Artistreg';
+import Admin from './components/Admin';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
-  const {setUser} = useContext(AuthContext)
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged((user)=>{
-            setUser(user)
-        })
+  const { setUser } = useContext(AuthContext)
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setUser(user)
     })
+  })
+
   return (
     <div>
-      <p className='logo-img'>  </p>
+      <p className='logo-img'> </p>
 
       <BrowserRouter basename='/'>
         {/* <div>
@@ -28,9 +30,10 @@ function App() {
         <Routes>
           <Route path='/login' element={<div><Login /></div>} />
           <Route path='/onboarding' element={<div><Onboarding /></div>} />
-          <Route path='/' element={<div><Home /> </div>} />
+          <Route exact path='/' element={<div><Home /> </div>} />
           <Route path='/signup' element={<div><Signup /> </div>} />
           <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
+          <Route path='/admin' element={<div><Admin /> </div>} />
         </Routes>
       </BrowserRouter></div>
   );

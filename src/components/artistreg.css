@@ -64,7 +64,7 @@
     justify-content: space-evenly;
 }
 
-.artist-reg-form form input {
+.artist-reg-form form input ,textarea{
     padding: 4px 8px;
     margin: 20px 0px;
     width: 95.5%;
