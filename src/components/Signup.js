@@ -53,7 +53,7 @@ function Signup() {
                                                 username: name,
                                                 email:email
                                             }).then(() => {
-                                                swal("Good job!", "You successfully Sign uped😋!", "success");
+                                                swal("Good job!", "You successfully Sign uped!", "success");
                                                 navigate('/login')
                                             })
                                         })
@@ -85,7 +85,7 @@ function Signup() {
                                     email: result.user.email,
                                     profilePic:result.user.photoURL
                                 }).then(() => {
-                                    swal("Good job!", "You successfully Sign uped😋!", "success");
+                                    swal("Good job!", "You successfully Sign uped!", "success");
                                     navigate('/')
                                 })
                             }).catch((error) => {

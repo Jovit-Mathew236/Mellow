@@ -81,7 +81,7 @@ function Artistreg() {
                                                 //     }).catch((error) => {
                                                 //         console.log(error.message);
                                                 //     }).then(()=>{
-                                                //         swal("Good job!", "You successfully  Submited😋!", "success");
+                                                //         swal("Good job!", "You successfully  Submited!", "success");
                                                 //         navigate('/onboarding')
                                                 //     }) : navigate('/login')
                                                 // }else{
@@ -103,28 +103,28 @@ function Artistreg() {
                                     <div className='form-input-filed'>
                                         <div>
                                             <label> Your Bio</label><br />
-                                            <textarea name="bio" id="bio" placeholder='Enter Name' required onChange={(e) => setName(e.target.value)} value={name}></textarea>
+                                            <textarea name="bio" id="bio" placeholder='Enter Name' required></textarea>
                                         </div>
                                     </div>
                                     <div className='form-input-filed'>
                                         <div>
                                             <label> Add your photos of work</label><br />
                                             <br />
-                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required/>
                                         </div>
                                         <div>
                                         <br /><br />
-                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required/>
                                         </div>
                                     </div>
                                     <div className='form-input-filed'>
                                         <div>
                                             <br /><br />
-                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required/>
                                         </div>
                                         <div>
                                         <br /><br />
-                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} />
+                                            <input type="text" style={{ height: '120px' }} name="name" placeholder='' required/>
                                             <div></div>
 
                                         </div>
@@ -133,7 +133,7 @@ function Artistreg() {
                                     <button style={{width: "90%" ,margin: "0px auto"}} onClick={(e) => {
                                         if (name !== '' && location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
                                             e.preventDefault()
-                                            user ? firebase.firestore().collection('Artist-info').add({
+                                            user ? firebase.firestore().collection('Artist-info').doc(user.uid).set({
                                                 Name: name,
                                                 Location: location,
                                                 Expertise: expertise,
@@ -145,7 +145,7 @@ function Artistreg() {
                                             }).catch((error) => {
                                                 console.log(error.message);
                                             }).then(() => {
-                                                swal("Good job!", "You successfully  Submited😋!", "success");
+                                                swal("Good job!", "You successfully  Submited!", "success");
                                                 navigate('/onboarding')
                                             }) : navigate('/login')
                                         } else {

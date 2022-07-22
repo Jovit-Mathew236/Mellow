@@ -66,7 +66,7 @@ function Onboarding() {
                 <div className="thirdpic"></div>
             </div>}
 
-            <div className="artists-infos">
+            {user ? <div className="artists-infos">
                 <div className="artist-row">
                     {info.filter((val) => {
                         if (searchTerm === "") {
@@ -94,7 +94,7 @@ function Onboarding() {
 
                 </div>
 
-            </div>
+            </div>: null}
         </div>
     )
 }

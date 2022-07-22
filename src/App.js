@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Artistreg from './components/Artistreg';
 import Admin from './components/Admin';
+import Profile from './components/Profile';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
@@ -34,6 +35,7 @@ function App() {
           <Route path='/signup' element={<div><Signup /> </div>} />
           <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
           <Route path='/admin' element={<div><Admin /> </div>} />
+          <Route path='/profile' element={<div><Profile /> </div>} />
         </Routes>
       </BrowserRouter></div>
   );

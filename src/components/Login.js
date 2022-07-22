@@ -47,8 +47,8 @@ function Login() {
                                         //         id:result.user.uid,
                                         //         username:name
                                         //     }).then(()=>{
-                                        swal("Good job!", "You successfully  Logined😋!", "success");
-                                        userStatus === 'Employer' ? navigate('/onboarding') : navigate('/artistregistration')
+                                        swal("Good job!", "You successfully  Logined!", "success");
+                                        userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                                         // })
                                         // })
                                         // Signed in 
@@ -73,8 +73,8 @@ function Login() {
                         <button className="g-btn" onClick={() => {
                             firebase.auth().signInWithPopup(provider).then(() => {
                                 console.log("success");
-                                swal("Good job!", "You successfully  Logined😋!", "success");
-                                userStatus === 'Employer' ? navigate('/onboarding') : navigate('/artistregistration')
+                                swal("Good job!", "You successfully  Logined!", "success");
+                                userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                             }).catch((error) => {
                                 var errorMessage = error.message;
                                 console.log(errorMessage);

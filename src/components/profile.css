@@ -1,0 +1,109 @@
+.user-profile-contents {
+    padding: 0px 0px;
+    margin: 30px 50px;
+    box-shadow: 0px 0px 7px 0px #9a9a9a80;
+    border-radius: 10px;
+    color: #8390BB;
+}
+
+.user-profile-contents .user-profile-banner {
+    height: 300px;
+    width: 100%;
+}
+
+.user-profile-banner p.banner {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    /* background-color: aquamarine;
+    background-image: url(../images/user-banner.png); */
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.user-profile-banner p.banner button {
+    position: absolute;
+    right: 80px;
+    top: 190px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(54px);
+    border-radius: 8px;
+    color: white;
+}
+
+
+.profile-about-flex {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding: 0px 50px;
+
+}
+
+/* .profile-about-flex .profile-div {
+    padding: 0px 50px;
+} */
+
+.profile-about-flex .profile-div .profile-pic {
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    border-radius: 50%;
+    border: 8px solid white;
+    margin-top: -100px;
+}
+
+.about-div {
+    width: 50%;
+}
+
+.about-div .speciality {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-div .speciality p {
+    padding: 20px;
+    background: rgba(95, 108, 151, 0.08);
+    border-radius: 8px;
+}
+
+.user-work {
+    padding: 0px 50px;
+}
+
+.user-work .work-contents {
+    height: 500px;
+    padding-bottom: 40px;
+    display: flex;
+}
+
+.user-work .work-contents .big-pic-work {
+    height: 100%;
+    width: 50%;
+    border-radius: 12px;
+    background-image: url(../images/work-big.png);
+}
+
+.user-work .work-contents .small-work-pics {
+    height: 100%;
+    width: 50%;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+}
+
+.user-work .work-contents .small-work-pics .pics {
+    background-image: url(../images/work-small.png);
+    height: 48%;
+    width: 48%;
+    border-radius: 12px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
