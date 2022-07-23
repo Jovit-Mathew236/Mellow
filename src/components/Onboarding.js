@@ -5,11 +5,14 @@ import "./onboarding.css"
 import "../images/demobg1.jpg"
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Onboarding() {
     const { firebase } = useContext(FirebaseContext)
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [info, setInfo] = useState([])
+    const [userInfo, setUserInfo] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [expertise, setExpertise] = useState('Expertise')
     const [location, setLocation] = useState('Location')
@@ -23,12 +26,21 @@ function Onboarding() {
             })
             setInfo(alldocs)
         })
+        firebase.firestore().collection('user').get().then((snapshot) => {
+            const alldocs = snapshot.docs.map((infos) => {
+                return {
+                    ...infos.data(),
+                    id: infos.id
+                }
+            })
+            setUserInfo(alldocs)
+        })
     }, [firebase])
     // console.log(user.photoURL);
     return (
         <div>
             <div className="nav">
-                <img src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+                <img onClick={() => { navigate('/profile') }} src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
             </div>
             <div className="page">
                 <div className="p">
@@ -78,23 +90,24 @@ function Onboarding() {
                     }).map((info, index) => {
                         // console.log(info);
                         return (
-                            <div key={index} className="artist">
-                                <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
-                                    <img src={require('../images/demoprofile.jpeg')} alt="" className="artist-avathar" />
-                                </div>
-                                <div className="artist-info-content">
-                                    <h2>{info.Name}</h2>
-                                    <p>{info.Expertise}</p>
-                                    <p>{info.WorkExperience} year Experience</p>
-                                </div>
-                            </div>
+                                    <div key={index} className="artist">
+
+                                        <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
+                                            <img src={userInfo.filter((userinfo)=>{if(info.userId === userinfo.id){console.log(userinfo.profilePic);}})} alt="" className="artist-avathar" />
+                                        </div>
+                                        <div className="artist-info-content">
+                                            <h2>{info.Name}</h2>
+                                            <p>{info.Expertise}</p>
+                                            <p>{info.WorkExperience} year Experience</p>
+                                        </div>
+                                    </div>
                         )
 
                     })}
 
                 </div>
 
-            </div>: null}
+            </div> : null}
         </div>
     )
 }

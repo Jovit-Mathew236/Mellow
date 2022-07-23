@@ -15,9 +15,8 @@
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    /* background-color: aquamarine;
-    background-image: url(../images/user-banner.png); */
-    background-size: contain;
+    /* background-color: aquamarine; */
+    /* background-image: url(../images/user-banner.png); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -40,7 +39,6 @@
     justify-content: space-between;
     margin-top: 50px;
     padding: 0px 50px;
-
 }
 
 /* .profile-about-flex .profile-div {
@@ -54,7 +52,51 @@
     border-radius: 50%;
     border: 8px solid white;
     margin-top: -100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    /* border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: #0040ff;
+    border-radius: 5px;
+    box-shadow: 2px 3px 11px -4px #1b1b1bc2; */
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-name-p {
+    margin-top: 10px;
+    color: blue;
+    margin-left: 2px;
+}
+
+.image-input {
+    /* margin-left: -16px; */
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background-color: #0000004f;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.profile-about-flex .profile-div .profile-pic:hover .image-input{
+    display: flex;
+}
+
 
 .about-div {
     width: 50%;
@@ -62,7 +104,7 @@
 
 .about-div .speciality {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -70,6 +112,8 @@
     padding: 20px;
     background: rgba(95, 108, 151, 0.08);
     border-radius: 8px;
+    margin: 3px 3px;
+    width: 170px;
 }
 
 .user-work {

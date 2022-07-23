@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Firebase } from '../firebase/config';
-import { FirebaseContext } from '../store/Contexts'
+import { AuthContext, FirebaseContext } from '../store/Contexts'
 import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert';
 // import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/compat/auth';
@@ -28,6 +28,7 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
     var provider = new Firebase.auth.GoogleAuthProvider()
+    const { userStatus } = useContext(AuthContext)
     return (
         <div>
             <div className="head">
@@ -51,10 +52,12 @@ function Signup() {
                                             firebase.firestore().collection('user').add({
                                                 id: result.user.uid,
                                                 username: name,
-                                                email:email
+                                                email:email,
+                                                profilePic:"https://raw.githubusercontent.com/Jovit-Mathew236/Mellow/master/src/images/avathar.webp",
+                                                userStatus:userStatus
                                             }).then(() => {
                                                 swal("Good job!", "You successfully Sign uped!", "success");
-                                                navigate('/login')
+                                                userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                                             })
                                         })
                                         // Signed in 
@@ -79,14 +82,15 @@ function Signup() {
                         <button className="g-btn" onClick={() => {
                             firebase.auth().signInWithPopup(provider).then((result) => {
                                 console.log("success");
-                                firebase.firestore().collection('user').add({
+                                firebase.firestore().collection('user').doc(result.user.uid).set({
                                     id: result.user.uid,
                                     username: result.user.displayName,
                                     email: result.user.email,
-                                    profilePic:result.user.photoURL
+                                    profilePic:result.user.photoURL ? result.user.photoURL : "https://raw.githubusercontent.com/Jovit-Mathew236/Mellow/master/src/images/avathar.webp",
+                                    userStatus:userStatus
                                 }).then(() => {
                                     swal("Good job!", "You successfully Sign uped!", "success");
-                                    navigate('/')
+                                    userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                                 })
                             }).catch((error) => {
                                 var errorMessage = error.message;

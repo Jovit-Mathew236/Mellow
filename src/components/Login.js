@@ -71,8 +71,18 @@ function Login() {
 
                     <div className="g-btn-div">
                         <button className="g-btn" onClick={() => {
-                            firebase.auth().signInWithPopup(provider).then(() => {
+                            firebase.auth().signInWithPopup(provider).then((result) => {
                                 console.log("success");
+                                firebase.firestore().collection('user').doc(result.user.uid).set({
+                                    id: result.user.uid,
+                                    username: result.user.displayName,
+                                    email: result.user.email,
+                                    profilePic:result.user.photoURL ? result.user.photoURL : "https://raw.githubusercontent.com/Jovit-Mathew236/Mellow/master/src/images/avathar.webp",
+                                    userStatus:userStatus
+                                }).then(() => {
+                                    swal("Good job!", "You successfully Sign uped!", "success");
+                                    userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
+                                })
                                 swal("Good job!", "You successfully  Logined!", "success");
                                 userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                             }).catch((error) => {

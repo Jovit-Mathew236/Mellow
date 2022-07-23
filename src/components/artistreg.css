@@ -1,6 +1,7 @@
 .artist-reg {
     background: url(../images/aristreg\ pic.png), rgba(87, 92, 229, 0.04);
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -8,14 +9,15 @@
 }
 
 .filter {
-    height: 100vh;
+    height: auto;
     width: 70vw;
     backdrop-filter: blur(20px);
 }
 
 .artistreg-content {
     display: flex;
-    height: 100%;
+    height: auto;
+    min-height: 100vh;
     width: 100vw;
     align-items: center;
 }
@@ -40,21 +42,27 @@
 
 .artist-reg-form {
     background-color: white;
-    height: 70vh;
+    height: auto;
+    min-height: 80vh;
     width: 35vw;
+    padding: 20px 0px;
     border-radius: 5px;
     margin-left: 25vw;
     box-shadow: 0px 4px 84px rgb(0 0 0 / 14%);
     backdrop-filter: blur(110px);
+    display: flex;
+    justify-content: center;
 }
 
 .artist-reg-form .form-input-filed {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .artist-reg-form .form-fields {
-    height: 100%;
+    min-height: 80vh;
+    width: inherit;
 }
 
 .artist-reg-form form {
@@ -64,7 +72,7 @@
     justify-content: space-evenly;
 }
 
-.artist-reg-form form input ,textarea{
+.artist-reg-form form input{
     padding: 4px 8px;
     margin: 20px 0px;
     width: 95.5%;
@@ -72,6 +80,20 @@
     background: #F4F4F4;
     border-radius: 8px;
     font-size: 1em;
+}
+.artist-reg-form form textarea{
+    padding: 4px 8px;
+    margin: 20px 0px;
+    width: 95.5%;
+    height: 120px;
+    background: #F4F4F4;
+    border-radius: 8px;
+    font-size: 1em;
+}
+.artist-reg-form form .sub-btn{
+    margin: 0px auto;
+    /* width: 27.901vw; */
+    width: 80%;
 }
 .artist-reg-form form button {
     width: 100%;

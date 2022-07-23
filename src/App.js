@@ -10,13 +10,15 @@ import Signup from './components/Signup';
 import Artistreg from './components/Artistreg';
 import Admin from './components/Admin';
 import Profile from './components/Profile';
+import EditProfile from './components/EditProfile';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
-  const { setUser } = useContext(AuthContext)
+  const { setUser,setUserId } = useContext(AuthContext)
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user)
+      setUserId(user ? `'${user.uid}'` : null)
     })
   })
 
@@ -36,6 +38,7 @@ function App() {
           <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
           <Route path='/admin' element={<div><Admin /> </div>} />
           <Route path='/profile' element={<div><Profile /> </div>} />
+          <Route path='/editprofile' element={<div><EditProfile /> </div>} />
         </Routes>
       </BrowserRouter></div>
   );
