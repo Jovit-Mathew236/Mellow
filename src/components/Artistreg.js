@@ -17,6 +17,7 @@ function Artistreg() {
     const [contact, setContact] = useState('')
     const [address, setAddress] = useState('')
     const [workExp, setWorkExp] = useState('')
+    const [aboutMe, setAboutMe] = useState('')
     const [disply, setDisply] = useState("none")
 
     const date = new Date()
@@ -103,7 +104,7 @@ function Artistreg() {
                                     <div className='form-input-filed'>
                                         <div style={{width: "80%"}}>
                                             <label> Your Bio</label><br />
-                                            <textarea name="bio" id="bio" placeholder='Enter Name' required></textarea>
+                                            <textarea name="bio" id="bio" placeholder='Enter Name' onChange={(e)=>setAboutMe(e.target.value)} value={aboutMe} required></textarea>
                                         </div>
                                     </div>
                                     <div className='form-input-filed'>
@@ -139,6 +140,7 @@ function Artistreg() {
                                                     Contact: contact,
                                                     Address: address,
                                                     WorkExperience: workExp,
+                                                    AboutMe: aboutMe,
                                                     CreatedDate: date.toDateString(),
                                                     userId: user.uid
                                                 }).catch((error) => {

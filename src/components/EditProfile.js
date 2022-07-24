@@ -135,7 +135,7 @@ function EditProfile() {
 
                                         <form style={disply === "none" ? { display: "none" } : { display: "flex" }}>
                                             <div className='form-input-filed'>
-                                                <div>
+                                                <div style={{width: "80%"}}>
                                                     <label> Your Bio</label><br />
                                                     <textarea name="bio" id="bio" placeholder='Enter Name' required onChange={(e) => {
                                                         setAboutMe(e.target.value)
@@ -149,21 +149,21 @@ function EditProfile() {
                                                 <div>
                                                     <label> Add your photos of work</label><br />
                                                     <br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder='' required />
+                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
                                                 </div>
                                                 <div>
                                                     <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder='' required />
+                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
                                                 </div>
                                             </div>
                                             <div className='form-input-filed'>
                                                 <div>
                                                     <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder='' required />
+                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
                                                 </div>
                                                 <div>
                                                     <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder='' required />
+                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
                                                     <div></div>
 
                                                 </div>

@@ -16,6 +16,7 @@ function Profile() {
   const [info, setInfo] = useState([])
   const [userInfo, setUserInfo] = useState([])
   const [image, setImage] = useState()
+  const [imgname, setImgname] = useState('')
   // var userid = userId
   // console.log(userid);
   useEffect(() => {
@@ -70,17 +71,18 @@ function Profile() {
                   return null
                 }).map((info, index) => {
                   // console.log(info);
-                  console.log(image);
+                  
                   return (
-                    <p key={index} className="profile-pic" style={image ? { backgroundImage: `url(${URL.createObjectURL(image)})` } : { backgroundImage: `url(${user.photoURL})` }}>
+                    <p key={index} className="profile-pic" style={image ? { backgroundImage: `url(${URL.createObjectURL(image)})` } : { backgroundImage: `url(${info.profilePic})` }}>
                       <div className='image-input'>
                         <label htmlFor="customFile" className="custom-file-upload"><Camere /> </label>
                         <input id="customFile" onChange={(e) => {
                           setImage(e.target.files[0])
-                          firebase.storage().ref(`/image/profile/${user.uid}`).put(image).then(({ ref }) => {
+                          setImgname(e.target.files[0].name);
+                          firebase.storage().ref(`${user.uid}/profile/${user.uid + '.jpg'}/`).put(image).then(({ ref }) => {
                             ref.getDownloadURL().then((url) => {
                               console.log(url);
-                              firebase.firestore().collection('Artist-info').doc(user.uid).update({
+                              firebase.firestore().collection('user').doc(user.uid).update({
                                 profilePic: url
                               })
                             })

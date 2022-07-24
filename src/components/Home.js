@@ -14,7 +14,7 @@ function Home() {
     const navigate = useNavigate()
     // const test = user ? user.displayName : 'not worked'
     // console.log(test);
-    console.log(firebase);
+    // console.log(firebase);
     return (
         <div>
             {/* Main intro section */}

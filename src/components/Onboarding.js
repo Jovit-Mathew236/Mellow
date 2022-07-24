@@ -93,7 +93,7 @@ function Onboarding() {
                                     <div key={index} className="artist">
 
                                         <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
-                                            <img src={userInfo.filter((userinfo)=>{if(info.userId === userinfo.id){console.log(userinfo.profilePic);}})} alt="" className="artist-avathar" />
+                                            <img src={userInfo.filter((userinfo)=>{if(info.userId === userinfo.id){console.log(userinfo.profilePic)}return null})} alt="" className="artist-avathar" />
                                         </div>
                                         <div className="artist-info-content">
                                             <h2>{info.Name}</h2>

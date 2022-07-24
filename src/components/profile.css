@@ -16,7 +16,7 @@
     width: 100%;
     border-radius: 10px;
     /* background-color: aquamarine; */
-    /* background-image: url(../images/user-banner.png); */
+    background-image: url(../images/user-banner.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -49,6 +49,8 @@
     height: 100px;
     width: 100px;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 50%;
     border: 8px solid white;
     margin-top: -100px;
