@@ -43,7 +43,7 @@ function Home() {
                             PageTraffic is the perfect choice.
                         </p> <br /> <br />
                         <div className="btns-introsection">
-                            <button onClick={()=>{navigate('/onboarding'); setUserStatus('Employer')}}>I want an artist</button>
+                            <button onClick={()=>{user ? navigate('/onboarding') : navigate('/login'); setUserStatus('Employer')}}>I want an artist</button>
                             <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/login') ; setUserStatus('Participent')}}>I’m an artist</button>
                         </div>
                     </div>

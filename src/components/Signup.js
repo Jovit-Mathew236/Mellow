@@ -49,7 +49,7 @@ function Signup() {
                                     .then((result) => {
                                         console.log('Success');
                                         result.user.updateProfile({ displayName: name }).then(() => {
-                                            firebase.firestore().collection('user').add({
+                                            firebase.firestore().collection('user').doc(result.user.uid).set({
                                                 id: result.user.uid,
                                                 username: name,
                                                 email:email,

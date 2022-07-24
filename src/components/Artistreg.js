@@ -1,6 +1,4 @@
-import React from 'react'
-import { useContext } from 'react'
-import { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext, FirebaseContext } from '../store/Contexts'
 import swal from 'sweetalert';
@@ -11,6 +9,8 @@ function Artistreg() {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    const [artistRegStatus, setartistRegStatus] = useState(true)
+    const [info, setInfo] = useState([])
     const [name, setName] = useState('')
     const [location, setlocation] = useState('')
     const [expertise, setExpertise] = useState('')
@@ -21,6 +21,17 @@ function Artistreg() {
     const [disply, setDisply] = useState("none")
 
     const date = new Date()
+    useEffect(() => {
+        firebase.firestore().collection('Artist-info').get().then((snapshot) => {
+            const alldocs = snapshot.docs.map((infos) => {
+                return {
+                    ...infos.data(),
+                    id: infos.id
+                }
+            })
+            setInfo(alldocs)
+        })
+    })
     return (
         <div>
             <div className="artist-reg">
@@ -35,7 +46,18 @@ function Artistreg() {
                                 minim veniam, quis nostrud exercitation
                             </p>
                         </div>
-                        <div className="artist-reg-form">
+                        {info.filter((data) => {
+                            // console.log(data.id);
+                            if (data.id === user.uid) {
+                                // console.log(data);
+                                setartistRegStatus(false)
+                                navigate('/profile')
+                                return null
+                            }
+                            return null
+                            
+                        })}
+                        {artistRegStatus ? <div className="artist-reg-form" >
                             <div className="form-fields">
                                 <form style={disply === "none" ? { display: "flex" } : { display: "none" }}>
                                     <div className='form-input-filed'>
@@ -61,7 +83,7 @@ function Artistreg() {
                                     <div className='form-input-filed'>
                                         <div>
                                             <label> Address</label><br /><br />
-                                            <textarea type="text" style={{ height: '90px' ,padding:'20px'}} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} ></textarea>
+                                            <textarea type="text" style={{ height: '90px', padding: '20px' }} name="name" placeholder='' required onChange={(e) => setAddress(e.target.value)} value={address} ></textarea>
                                         </div>
                                         <div>
                                             <label> Work experience <br /><span style={{ fontSize: '10px' }}>(in years)</span></label><br />
@@ -94,17 +116,17 @@ function Artistreg() {
                                         </div>
                                     </div>
                                     {/* <div className="form-input-filed">
-                                        <div></div>
-                                        <button>Next</button>
-                                    </div> */}
+                                            <div></div>
+                                            <button>Next</button>
+                                        </div> */}
                                 </form>
 
 
                                 <form style={disply === "none" ? { display: "none" } : { display: "flex" }}>
                                     <div className='form-input-filed'>
-                                        <div style={{width: "80%"}}>
+                                        <div style={{ width: "80%" }}>
                                             <label> Your Bio</label><br />
-                                            <textarea name="bio" id="bio" placeholder='Enter Name' onChange={(e)=>setAboutMe(e.target.value)} value={aboutMe} required></textarea>
+                                            <textarea name="bio" id="bio" placeholder='Enter Name' onChange={(e) => setAboutMe(e.target.value)} value={aboutMe} required></textarea>
                                         </div>
                                     </div>
                                     <div className='form-input-filed'>
@@ -130,7 +152,7 @@ function Artistreg() {
                                         </div>
                                     </div>
                                     <div className='sub-btn'>
-                                        <button style={{  margin: "0px auto" }} onClick={(e) => {
+                                        <button style={{ margin: "0px auto" }} onClick={(e) => {
                                             if (name !== '' && location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
                                                 e.preventDefault()
                                                 user ? firebase.firestore().collection('Artist-info').doc(user.uid).set({
@@ -147,7 +169,7 @@ function Artistreg() {
                                                     console.log(error.message);
                                                 }).then(() => {
                                                     swal("Good job!", "You successfully  Submited!", "success");
-                                                    navigate('/onboarding')
+                                                    navigate('/profile')
                                                 }) : navigate('/login')
                                             } else {
                                                 alert('Fill all the filed')
@@ -156,13 +178,20 @@ function Artistreg() {
                                         }}>Submit</button>
                                     </div>
                                     {/* <div className="form-input-filed">
-                                        <div></div>
-                                        <button>Next</button>
-                                    </div> */}
+                                            <div></div>
+                                            <button>Next</button>
+                                        </div> */}
                                 </form>
 
                             </div>
-                        </div>
+                        </div> : null}
+
+
+
+
+
+
+
                     </div>
                 </div>
 

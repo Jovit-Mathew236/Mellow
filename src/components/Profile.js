@@ -16,7 +16,7 @@ function Profile() {
   const [info, setInfo] = useState([])
   const [userInfo, setUserInfo] = useState([])
   const [image, setImage] = useState()
-  const [imgname, setImgname] = useState('')
+  // const [imgname, setImgname] = useState('')
   // var userid = userId
   // console.log(userid);
   useEffect(() => {
@@ -39,11 +39,29 @@ function Profile() {
       setUserInfo(alldocs)
     })
   }, [firebase])
+  // console.log(imgname);
   return (
     <div>
-      <div className="nav">
-        <img src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+
+      <div className="nav" >
+
+        {userInfo.filter((data) => {
+          // console.log(data.id);
+          if (data.id === user.uid) {
+            // console.log(data);
+            return data
+          }
+          return null
+        }).map((info, index) => {
+          // console.log(info);
+
+          return (
+            <img key={index} src={image ? URL.createObjectURL(image) : info.profilePic} alt="" />
+          )
+        })}
       </div>
+
+
       <br />
       <div className="user-profile-contents">
         <div className="user-profile-banner">
@@ -71,15 +89,15 @@ function Profile() {
                   return null
                 }).map((info, index) => {
                   // console.log(info);
-                  
+
                   return (
                     <p key={index} className="profile-pic" style={image ? { backgroundImage: `url(${URL.createObjectURL(image)})` } : { backgroundImage: `url(${info.profilePic})` }}>
                       <div className='image-input'>
                         <label htmlFor="customFile" className="custom-file-upload"><Camere /> </label>
                         <input id="customFile" onChange={(e) => {
                           setImage(e.target.files[0])
-                          setImgname(e.target.files[0].name);
-                          firebase.storage().ref(`${user.uid}/profile/${user.uid + '.jpg'}/`).put(image).then(({ ref }) => {
+                          // setImgname(e.target.files[0].name);
+                          firebase.storage().ref(`${user.uid}/profile/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
                             ref.getDownloadURL().then((url) => {
                               console.log(url);
                               firebase.firestore().collection('user').doc(user.uid).update({

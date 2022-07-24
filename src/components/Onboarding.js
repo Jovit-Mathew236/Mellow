@@ -39,9 +39,27 @@ function Onboarding() {
     // console.log(user.photoURL);
     return (
         <div>
-            <div className="nav">
-                <img onClick={() => { navigate('/profile') }} src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+            <div className="nav" >
+
+                {userInfo.filter((data) => {
+                    // console.log(data.id);
+                    if (data.id === user.uid) {
+                        // console.log(data);
+                        return data
+                    }
+                    return null
+                }).map((info, index) => {
+                    // console.log(info);
+
+                    return (
+                        <img key={index} onClick={() => { navigate('/profile') }} src={user ? info.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+                    )
+                })}
             </div>
+
+            {/* <div className="nav">
+                <img onClick={() => { navigate('/profile') }} src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
+            </div> */}
             <div className="page">
                 <div className="p">
                     <h1>Hire the best freelance <br />
@@ -90,17 +108,29 @@ function Onboarding() {
                     }).map((info, index) => {
                         // console.log(info);
                         return (
-                                    <div key={index} className="artist">
+                            <div key={index} className="artist">
 
-                                        <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
-                                            <img src={userInfo.filter((userinfo)=>{if(info.userId === userinfo.id){console.log(userinfo.profilePic)}return null})} alt="" className="artist-avathar" />
-                                        </div>
-                                        <div className="artist-info-content">
-                                            <h2>{info.Name}</h2>
-                                            <p>{info.Expertise}</p>
-                                            <p>{info.WorkExperience} year Experience</p>
-                                        </div>
-                                    </div>
+                                <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
+                                    {userInfo.filter((userinfo) => {
+                                        if (info.userId === userinfo.id) {
+                                            // console.log(userinfo.profilePic)
+                                            return userinfo
+                                        }
+                                        return null
+                                    }).map((info, index) => {
+                                        // console.log(info);
+                                        return (
+                                            <img key={index} src={info.profilePic ? info.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg" } alt="avathar" className="artist-avathar" />
+                                        )
+                                    })}
+
+                                </div>
+                                <div className="artist-info-content">
+                                    <h2>{info.Name}</h2>
+                                    <p>{info.Expertise}</p>
+                                    <p>{info.WorkExperience} year Experience</p>
+                                </div>
+                            </div>
                         )
 
                     })}
