@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Onboarding() {
     const { firebase } = useContext(FirebaseContext)
-    const { user } = useContext(AuthContext)
+    const { user ,setUserId} = useContext(AuthContext)
     const navigate = useNavigate()
     const [info, setInfo] = useState([])
     const [userInfo, setUserInfo] = useState([])
@@ -108,7 +108,10 @@ function Onboarding() {
                     }).map((info, index) => {
                         // console.log(info);
                         return (
-                            <div key={index} className="artist">
+                            <div key={index} className="artist" onClick={()=>{
+                                setUserId(info.userId)
+                                navigate('/userprofileview')
+                            }}>
 
                                 <div className="imgs" style={{ backgroundImage: "url('/static/media/demobg1.cc5791e0.jpg')" }}>
                                     {userInfo.filter((userinfo) => {
@@ -120,7 +123,7 @@ function Onboarding() {
                                     }).map((info, index) => {
                                         // console.log(info);
                                         return (
-                                            <img key={index} src={info.profilePic ? info.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg" } alt="avathar" className="artist-avathar" />
+                                            <img key={index} src={info.profilePic ? info.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="avathar" className="artist-avathar" />
                                         )
                                     })}
 

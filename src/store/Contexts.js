@@ -9,6 +9,7 @@ export const AuthContext = createContext(null);
 export default function Context({ children }) {
     const [user, setUser] = useState('null')
     const [userId, setUserId] = useState('')
+    
     const [userStatus, setUserStatus] = useState('null')
     return (
 

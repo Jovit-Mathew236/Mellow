@@ -11,14 +11,15 @@ import Artistreg from './components/Artistreg';
 import Admin from './components/Admin';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
+import UserProfileView from './components/UserProfileView';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
-  const { setUser,setUserId } = useContext(AuthContext)
+  const { setUser } = useContext(AuthContext) //remove ,setUserId
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user)
-      setUserId(user ? `'${user.uid}'` : null)
+      // setUserId(user ? `'${user.uid}'` : null)
     })
   })
 
@@ -39,6 +40,7 @@ function App() {
           <Route path='/admin' element={<div><Admin /> </div>} />
           <Route path='/profile' element={<div><Profile /> </div>} />
           <Route path='/editprofile' element={<div><EditProfile /> </div>} />
+          <Route path='/userprofileview' element={<div><UserProfileView /> </div>} />
         </Routes>
       </BrowserRouter></div>
   );
