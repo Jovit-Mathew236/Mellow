@@ -88,7 +88,7 @@ function Profile() {
                   }
                   return null
                 }).map((info, index) => {
-                  // console.log(info);
+                  // console.log(info === null ? "nop": "yeah");
 
                   return (
                     <p key={index} className="profile-pic" style={image ? { backgroundImage: `url(${URL.createObjectURL(image)})` } : { backgroundImage: `url(${info.profilePic})` }}>

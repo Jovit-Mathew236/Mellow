@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Onboarding() {
     const { firebase } = useContext(FirebaseContext)
-    const { user ,setUserId} = useContext(AuthContext)
+    const { user, setUserId } = useContext(AuthContext)
     const navigate = useNavigate()
     const [info, setInfo] = useState([])
     const [userInfo, setUserInfo] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [expertise, setExpertise] = useState('Expertise')
-    const [location, setLocation] = useState('Location')
+    // const [expertise, setExpertise] = useState('Expertise')
+    // const [location, setLocation] = useState('Location')
     useEffect(() => {
         firebase.firestore().collection('Artist-info').get().then((snapshot) => {
             const alldocs = snapshot.docs.map((infos) => {
@@ -69,19 +69,19 @@ function Onboarding() {
                 </div>
                 <div className="search">
                     <input type="text" placeholder='Search For Artists...' onChange={(e) => { setSearchTerm(e.target.value) }} />
-                    <select name="Section" id="sectionlist" required onChange={e => { setExpertise(e.target.value) }} value={expertise}>
+                    <select name="Section" id="sectionlist" required onChange={e => { setSearchTerm(e.target.value) }} >
                         <option value="">Expertise</option>
                         {info.map((exp, index) => {
                             return (
-                                <option key={index} value="Location1">{exp.Expertise}</option>
+                                <option key={index} value={exp.Expertise} >{exp.Expertise}</option>
                             )
                         })}
                     </select>
-                    <select name="Section" id="sectionlist" required onChange={e => { setLocation(e.target.value) }} value={location}>
+                    <select name="Section" id="sectionlist" required onChange={e => { setSearchTerm(e.target.value) }}>
                         <option value="">Location</option>
                         {info.map((loc, index) => {
                             return (
-                                <option key={index} value="Location1">{loc.Location}</option>
+                                <option key={index} value={loc.Location}>{loc.Location}</option>
                             )
                         })}
                     </select>
@@ -99,16 +99,17 @@ function Onboarding() {
             {user ? <div className="artists-infos">
                 <div className="artist-row">
                     {info.filter((val) => {
+                        // console.log(val);
                         if (searchTerm === "") {
                             return val
-                        } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        } else if (val.Name.toLowerCase().includes(searchTerm.toLowerCase()) || val.Expertise.toLowerCase().includes(searchTerm.toLowerCase()) || val.Location.toLowerCase().includes(searchTerm.toLowerCase())) {
                             return val
                         }
                         return null
                     }).map((info, index) => {
                         // console.log(info);
                         return (
-                            <div key={index} className="artist" onClick={()=>{
+                            <div key={index} className="artist" onClick={() => {
                                 setUserId(info.userId)
                                 navigate('/userprofileview')
                             }}>

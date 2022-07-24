@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import Arrow from '../assets/Arrow'
 import Facebook from '../assets/icons/Facebook'
@@ -12,15 +12,42 @@ function Home() {
     const { firebase } = useContext(FirebaseContext)
     const { user,setUserStatus } = useContext(AuthContext)
     const navigate = useNavigate()
+    // const [info, setInfo] = useState([])
+    const [userInfo, setUserInfo] = useState([])
     // const test = user ? user.displayName : 'not worked'
     // console.log(test);
     // console.log(firebase);
+    useEffect(() => {
+        firebase.firestore().collection('user').get().then((snapshot) => {
+            const alldocs = snapshot.docs.map((infos) => {
+                return {
+                    ...infos.data(),
+                    id: infos.id
+                }
+            })
+            setUserInfo(alldocs)
+        })
+    }, [firebase])
     return (
         <div>
             {/* Main intro section */}
             <div className="main-page-one">
                 <div className="nav-bar">
-                    <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/login')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>
+                {user ? userInfo.filter((data) => {
+                    // console.log(data.id);
+                    if (data.id === user.uid) {
+                        // console.log(data);
+                        return data
+                    }
+                    return null
+                }).map((info, index) => {
+                    // console.log(info);
+
+                    return (
+                        <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${info.profilePic})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>
+                        )
+                    }):<button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>}
+                    {/* <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/login')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button> */}
                     {user ? <div className='logout-btn'>
                         <p className='dropdown'><SignOut/> </p>
                         <div className="dropdown-content">
@@ -43,8 +70,8 @@ function Home() {
                             PageTraffic is the perfect choice.
                         </p> <br /> <br />
                         <div className="btns-introsection">
-                            <button onClick={()=>{user ? navigate('/onboarding') : navigate('/login'); setUserStatus('Employer')}}>I want an artist</button>
-                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/login') ; setUserStatus('Participent')}}>I’m an artist</button>
+                            <button onClick={()=>{user ? navigate('/onboarding') : navigate('/signup'); setUserStatus('Employer')}}>I want an artist</button>
+                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/signup') ; setUserStatus('Participent')}}>I’m an artist</button>
                         </div>
                     </div>
                     <div className="pic-main-intro">

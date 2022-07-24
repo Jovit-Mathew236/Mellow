@@ -23,7 +23,7 @@ function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     var provider = new Firebase.auth.GoogleAuthProvider()
-    const { userStatus } = useContext(AuthContext)
+    const { userStatus,setUserStatus } = useContext(AuthContext)
     return (
         <div>
             <div className="head">
@@ -92,7 +92,7 @@ function Login() {
                         }}><p className='g-logo'></p>Continue with Google</button>
                     </div>
 
-                    <p className='signup-p'>New to the platform? <a className='signup-link' href="/signup">Sign Up</a> Now</p>
+                    <p className='signup-p'>New to the platform? <a className='signup-link' href="/signup" onClick={()=>setUserStatus(userStatus)}>Sign Up</a> Now</p>
 
                 </div>
 
