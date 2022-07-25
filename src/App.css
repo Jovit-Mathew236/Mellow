@@ -18,6 +18,11 @@
   outline: none;
 }
 
+.alert-h1{
+  text-align: center;
+  margin-top: 20%;
+}
+
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -47,3 +52,4 @@
     transform: rotate(360deg);
   }
 } */
+

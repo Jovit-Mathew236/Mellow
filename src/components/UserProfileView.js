@@ -7,16 +7,19 @@ import "./onboarding.css"
 import "./profile.css"
 import "./home.css"
 import { useNavigate } from 'react-router-dom'
+import Phone from '../assets/icons/Phone'
+import Whatsapp from '../assets/icons/Whatsapp'
+import Mail from '../assets/icons/Mail'
 // import Camere from '../assets/Camere'
 
 function UserProfileView() {
-    const { firebase } = useContext(FirebaseContext)
-  const { user,userId } = useContext(AuthContext) //    remove ,userStatus
+  const { firebase } = useContext(FirebaseContext)
+  const { user, userId } = useContext(AuthContext) //    remove ,userStatus
   const navigate = useNavigate()
   const [info, setInfo] = useState([])
   const [userInfo, setUserInfo] = useState([])
-//   const [image, setImage] = useState()
-console.log(userId);
+  //   const [image, setImage] = useState()
+  console.log(userId);
   useEffect(() => {
     firebase.firestore().collection('Artist-info').get().then((snapshot) => {
       const alldocs = snapshot.docs.map((infos) => {
@@ -53,7 +56,7 @@ console.log(userId);
           // console.log(info);
 
           return (
-            <img key={index} src={info.profilePic} alt="" onClick={()=> navigate('/profile')} />
+            <img key={index} src={info.profilePic} alt="" onClick={() => navigate('/profile')} />
           )
         })}
       </div>
@@ -114,9 +117,9 @@ console.log(userId);
                 <p className="user-expertise">{info.Expertise}  ·  {info.WorkExperience}+ Years of experience</p>
                 <p className="location">{info.Location}</p>
                 <div className="user-contact">
-                  <div className="contact-ph"></div>
-                  <div className="contact-whatsapp"></div>
-                  <div className="contact-email"></div>
+                  <a href={`tel:+91${info.Contact}`}><div className="contact-ph"><Phone /> Contact</div></a>
+                  <a href={`https://wa.me/${info.Contact}`}><div className="contact-whatsapp"><Whatsapp /> </div></a>
+                  <a href={`mailto:${''}`}><div className="contact-email"><Mail /></div></a>
                 </div>
               </div>
             )

@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import Search from '../assets/Search'
 import { AuthContext, FirebaseContext } from '../store/Contexts';
 import "./onboarding.css"
+import './home.css'
 import "../images/demobg1.jpg"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SignOut from '../assets/icons/SignOut';
 
 function Onboarding() {
     const { firebase } = useContext(FirebaseContext)
@@ -55,8 +57,16 @@ function Onboarding() {
                         <img key={index} onClick={() => { navigate('/profile') }} src={user ? info.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
                     )
                 })}
+                {user ? <div className='logout-btn' style={{margin: "4px -30px 4px 20px"}}>
+                        <p className='dropdown'><SignOut/> </p>
+                        <div className="dropdown-content">
+                            <p onClick={() => {
+                                firebase.auth().signOut()
+                            }}>LogOut</p>
+                        </div>
+                    </div> : null}
             </div>
-
+            
             {/* <div className="nav">
                 <img onClick={() => { navigate('/profile') }} src={user ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpeg"} alt="" />
             </div> */}

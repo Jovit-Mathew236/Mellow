@@ -8,6 +8,10 @@ import "./profile.css"
 import "./home.css"
 import { useNavigate } from 'react-router-dom'
 import Camere from '../assets/Camere'
+import SignOut from '../assets/icons/SignOut'
+import Phone from '../assets/icons/Phone'
+import Whatsapp from '../assets/icons/Whatsapp'
+import Mail from '../assets/icons/Mail'
 
 function Profile() {
   const { firebase } = useContext(FirebaseContext)
@@ -45,7 +49,7 @@ function Profile() {
 
       <div className="nav" >
 
-        {userInfo.filter((data) => {
+        {user ? userInfo.filter((data) => {
           // console.log(data.id);
           if (data.id === user.uid) {
             // console.log(data);
@@ -58,17 +62,25 @@ function Profile() {
           return (
             <img key={index} src={image ? URL.createObjectURL(image) : info.profilePic} alt="" />
           )
-        })}
+        }) : navigate('/')}
+        {user ? <div className='logout-btn' style={{ margin: "4px -30px 4px 20px" }}>
+          <p className='dropdown'><SignOut /> </p>
+          <div className="dropdown-content">
+            <p onClick={() => {
+              firebase.auth().signOut()
+            }}>LogOut</p>
+          </div>
+        </div> : null}
       </div>
 
 
       <br />
       <div className="user-profile-contents">
         <div className="user-profile-banner">
-          <p className="banner" style={{ backgroundImage: `url(${'/static/media/user-banner.783996bc.png'})` }}>{userStatus === "Employer" ? null : <button onClick={() => { navigate('/editprofile') }}>Edit profile</button>}</p>
+          <p className="banner" style={{ backgroundImage: `url(${'/static/media/user-banner.783996bc.png'})` }}>{userStatus === "Participent" ? <button onClick={() => { navigate('/editprofile') }}>Edit profile</button> : null}</p>
         </div>
         <div className="profile-about-flex">
-          {info.filter((data) => {
+          {user ? info.filter((data) => {
             // console.log(data.id);
             if (data.id === user.uid) {
               // console.log(data);
@@ -117,15 +129,15 @@ function Profile() {
                 <p className="user-expertise">{info.Expertise}  ·  {info.WorkExperience}+ Years of experience</p>
                 <p className="location">{info.Location}</p>
                 <div className="user-contact">
-                  <div className="contact-ph"></div>
-                  <div className="contact-whatsapp"></div>
-                  <div className="contact-email"></div>
+                  <a href={`tel:+91${info.Contact}`}><div className="contact-ph"><Phone /> Contact</div></a>
+                  <a href={`https://wa.me/${info.Contact}`}><div className="contact-whatsapp"><Whatsapp /> </div></a>
+                  <a href={`mailto:${''}`}><div className="contact-email"><Mail /></div></a>
                 </div>
               </div>
             )
-          })}
+          }) : navigate('/')}
 
-          {info.filter((data) => {
+          {user ?info.filter((data) => {
             // console.log(data.id);
             if (data.id === user.uid) {
               // console.log(data);
@@ -147,7 +159,7 @@ function Profile() {
                 </div>
               </div>
             )
-          })}
+          }): navigate('/')}
 
         </div>
         <br /><br /><br />

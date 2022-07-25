@@ -11,7 +11,7 @@ function Admin() {
   const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState([])
   const [info, setInfo] = useState([])
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   useEffect(() => {
     firebase.firestore().collection('Artist-info').get().then((snapshot) => {
       const alldocs = snapshot.docs.map((infos) => {
@@ -70,15 +70,15 @@ function Admin() {
                     <p key={index} className="profile-pic" style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p>
                   )
                 })}
-                <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p>
+                {/* <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> */}
                 <p className='name'>{exp.Name}</p>
                 <div className='freelancer-option-btn' onClick={() => setShow(!show)}>
                   <p className='freelancer-option'><Option /></p>
-                  {show ? <div key={index} className="option-content">
+                 <div className="option-content" style={show ? {display:"none"} : {display:"unset"}}>
                     <p>Restrict</p>
                     <p>Ban</p>
                     <p>Download profile</p>
-                  </div> : null}
+                  </div>
                 </div>
               </div>
             )
@@ -92,8 +92,19 @@ function Admin() {
           {info.map((exp, index) => {
             return (
               <div key={index} className="freelancer">
-
-                <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p>
+                {userInfo.filter((userinfo) => {
+                  if (exp.userId === userinfo.id) {
+                    // console.log(userinfo.profilePic)
+                    return userinfo
+                  }
+                  return null
+                }).map((info, index) => {
+                  // console.log(info);
+                  return (
+                    <p key={index} className="profile-pic" style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p>
+                  )
+                })}
+                {/* <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> */}
                 <p className='name'>{exp.Name}</p>
                 <div className='freelancer-option-btn'>
                   <p className='freelancer-option'><Option /></p>

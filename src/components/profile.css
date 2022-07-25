@@ -95,10 +95,49 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
 }
-.profile-about-flex .profile-div .profile-pic:hover .image-input{
+
+.profile-about-flex .profile-div .profile-pic:hover .image-input {
     display: flex;
 }
 
+.user-contact {
+    margin-top: 20px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    width: 160px;
+    flex-wrap: wrap;
+
+}
+
+.user-contact a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.user-contact .contact-ph {
+    background-color: #5F6C97;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    width: 80px;
+    padding: 3px 10px;
+    border-radius: 30px;
+}
+
+.user-contact .contact-whatsapp,
+.user-contact .contact-email {
+    background-color: #5F6C97;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    padding: 3px 3px;
+    border-radius: 30px;
+}
 
 .about-div {
     width: 50%;
