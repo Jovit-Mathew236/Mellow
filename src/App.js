@@ -38,7 +38,7 @@ function App() {
           <Route exact path='/' element={<div><Home /> </div>} />
           <Route path='/signup' element={<div><Signup /> </div>} />
           <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
-          <Route path='/admin' element={user.email === 'jovitmathew236@gmail.com' ? <div><Admin /> </div>: <div className='alert-h1'><h1>You don't have permission to acces this directory</h1></div>} />
+          <Route path='/admin' element={user.email === 'admin@gmail.com' ? <div><Admin /> </div>: <div className='alert-h1'><h1>You don't have permission to acces this directory</h1></div>} />
           <Route path='/profile' element={<div><Profile /> </div>} />
           <Route path='/editprofile' element={<div><EditProfile /> </div>} />
           <Route path='/userprofileview' element={<div><UserProfileView /> </div>} />
