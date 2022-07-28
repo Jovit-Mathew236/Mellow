@@ -12,5 +12,5 @@ You may also see any lint errors in the console.
 
 code Zip File [DOWNLOAD](https://github.com/Jovit-Mathew236/Mellow/archive/refs/heads/master.zip) to view and edit it in your browser.
 
-<a href="https://github.com/Jovit-Mathew236/Mellow/archive/refs/heads/master.zip" class="btn--success">Download</a>
+<a href="https://github.com/Jovit-Mathew236/Mellow/archive/refs/heads/master.zip" color="white" background-color="green" padding="20px 30px" class="btn--success">Download</a>
 
