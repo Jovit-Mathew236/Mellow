@@ -37,23 +37,45 @@
 }
 
 .freelancer p.name {
-    margin-left: -65%;
-    font-size: 30px;
+    margin-left: -30%;
+    font-size: 25px;
+    width: inherit;
 }
 
 .freelancer .freelancer-option-btn .option-content {
     /* display: none; */
-    padding: 2px 5px;
+    padding: 8px 10px;
     position: absolute;
-    margin-left: 0px;
+    margin-left: 20px;
+    /* margin-top: 60px; */
     background: #FFFFFF;
     box-shadow: 0px 4px 69px rgb(0 0 0 / 9%);
     border-radius: 0px 10px 10px 10px;
+    transition: .2s ease;
 }
 
-.freelancer .freelancer-option-btn:focus .option-content {
-    /* display: block; */
+.freelancer .freelancer-option {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    border-radius: 50%;
+    transition: .2s ease;
 }
+
+.freelancer .freelancer-option:hover{
+    background-color: #80808059;
+}
+.freelancer-option-btn .option-content p{
+    border-radius: 5px;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+.freelancer-option-btn .option-content p:hover{
+    background-color: #a1a1a15e;
+}
+
 
 .reported-all-freelancers {
     margin: 30px 90px;

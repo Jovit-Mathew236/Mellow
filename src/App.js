@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { AuthContext, FirebaseContext } from './store/Contexts'
 
 import Login from './components/Login';
@@ -15,15 +15,17 @@ import UserProfileView from './components/UserProfileView';
 
 function App() {
   const { firebase } = useContext(FirebaseContext)
-  const { setUser,user } = useContext(AuthContext) //remove ,setUserId
+  const { setUser } = useContext(AuthContext) //remove ,setUserId
+  const [email, setemail] = useState('')
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user)
-      console.log(user.email);
+      setemail(user ? user.email: '')
+      // console.log(user);
       // setUserId(user ? `'${user.uid}'` : null)
     })
   })
-
+// const useremail = user.email !== null  ? user.email : ''
   return (
     <div>
       <p className='logo-img'> </p>
@@ -38,7 +40,7 @@ function App() {
           <Route exact path='/' element={<div><Home /> </div>} />
           <Route path='/signup' element={<div><Signup /> </div>} />
           <Route path='/artistregistration' element={<div><Artistreg /> </div>} />
-          <Route path='/admin' element={user.email === 'admin@gmail.com' ? <div><Admin /> </div>: <div className='alert-h1'><h1>You don't have permission to acces this directory</h1></div>} />
+          <Route path='/admin' element={email === 'admin@gmail.com' ? <div><Admin /> </div>: <div className='alert-h1'><h1>You don't have permission to acces this directory</h1></div>} />
           <Route path='/profile' element={<div><Profile /> </div>} />
           <Route path='/editprofile' element={<div><EditProfile /> </div>} />
           <Route path='/userprofileview' element={<div><UserProfileView /> </div>} />

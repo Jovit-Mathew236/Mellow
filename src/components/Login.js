@@ -42,13 +42,14 @@ function Login() {
                                 firebase.auth().signInWithEmailAndPassword(email, password)
                                     .then(() => {
                                         console.log('Succsses');
+                                        email === "admin@gmail.com" ? navigate('/admin') : userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding') ;
                                         // result.user.updateProfile({displayName:name}).then(()=>{
                                         //     firebase.firestore().collection('user').add({
                                         //         id:result.user.uid,
                                         //         username:name
                                         //     }).then(()=>{
                                         swal("Good job!", "You successfully  Logined!", "success");
-                                        userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
+                                        
                                         // })
                                         // })
                                         // Signed in 
@@ -83,8 +84,9 @@ function Login() {
                                     swal("Good job!", "You successfully Sign uped!", "success");
                                     userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                                 })
+                                result.user.email === "admin@gmail.com" ? navigate('/admin') : userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding') ;
                                 swal("Good job!", "You successfully  Logined!", "success");
-                                userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
+                                // userStatus === 'Participent' ? navigate('/artistregistration') : navigate('/onboarding')
                             }).catch((error) => {
                                 var errorMessage = error.message;
                                 console.log(errorMessage);

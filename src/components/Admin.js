@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom'
 
 function Admin() {
   const { firebase } = useContext(FirebaseContext)
-  const { user } = useContext(AuthContext)
+  const { user,setUserId } = useContext(AuthContext)
   const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState([])
   const [info, setInfo] = useState([])
-  const [show, setShow] = useState(true)
+  const [myStyle, setMyStyle] = useState({});
   useEffect(() => {
     firebase.firestore().collection('Artist-info').get().then((snapshot) => {
       const alldocs = snapshot.docs.map((infos) => {
@@ -22,6 +22,7 @@ function Admin() {
       })
       setInfo(alldocs)
     })
+
     firebase.firestore().collection('user').get().then((snapshot) => {
       const alldocs = snapshot.docs.map((infos) => {
         return {
@@ -32,6 +33,14 @@ function Admin() {
       setUserInfo(alldocs)
     })
   }, [firebase])
+
+  const handleClick = (id) => {
+    setMyStyle((prevState) => ({
+      ...myStyle,
+      [id]: !prevState[id]
+    }));
+  };
+
   return (
     <div>
       <div className="nav" >
@@ -72,12 +81,20 @@ function Admin() {
                 })}
                 {/* <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> */}
                 <p className='name'>{exp.Name}</p>
-                <div className='freelancer-option-btn' onClick={() => setShow(!show)}>
+                <div className='freelancer-option-btn' onClick={(
+                  
+                ) => handleClick(index)}>
                   <p className='freelancer-option'><Option /></p>
-                 <div className="option-content" style={show ? {display:"none"} : {display:"unset"}}>
-                    <p>Restrict</p>
+                  <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%"  }}>
+                    <p  onClick={()=>{
+                      // exp.updateUser(exp.userId, { disabled: true })
+
+                    }}>Restrict</p>
                     <p>Ban</p>
-                    <p>Download profile</p>
+                    <p onClick={() => {
+                                setUserId(exp.userId)
+                                navigate('/userprofileview')
+                            }}>Download profile</p>
                   </div>
                 </div>
               </div>
