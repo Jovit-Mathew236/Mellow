@@ -90,7 +90,6 @@ function Admin() {
                       // exp.updateUser(exp.userId, { disabled: true })
 
                     }}>Restrict</p>
-                    
                     <p>Ban</p>
                     <p onClick={() => {
                                 setUserId(exp.userId)
