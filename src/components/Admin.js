@@ -82,7 +82,7 @@ function Admin() {
                 {/* <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> */}
                 <p className='name'>{exp.Name}</p>
                 <div className='freelancer-option-btn' onClick={(
-                  
+
                 ) => handleClick(index)}>
                   <p className='freelancer-option'><Option /></p>
                   <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%"  }}>
@@ -90,6 +90,7 @@ function Admin() {
                       // exp.updateUser(exp.userId, { disabled: true })
 
                     }}>Restrict</p>
+                    
                     <p>Ban</p>
                     <p onClick={() => {
                                 setUserId(exp.userId)
