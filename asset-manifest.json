@@ -1,12 +1,12 @@
 {
   "main.css": "/Mellow/static/css/main.e6943821.chunk.css",
-  "main.js": "/Mellow/static/js/main.34bfa570.chunk.js",
-  "main.js.map": "/Mellow/static/js/main.34bfa570.chunk.js.map",
+  "main.js": "/Mellow/static/js/main.d67427aa.chunk.js",
+  "main.js.map": "/Mellow/static/js/main.d67427aa.chunk.js.map",
   "static/js/1.47eb2016.chunk.js": "/Mellow/static/js/1.47eb2016.chunk.js",
   "static/js/1.47eb2016.chunk.js.map": "/Mellow/static/js/1.47eb2016.chunk.js.map",
   "runtime~main.js": "/Mellow/static/js/runtime~main.04fffc6e.js",
   "runtime~main.js.map": "/Mellow/static/js/runtime~main.04fffc6e.js.map",
-  "static/media/onboarding.css": "/Mellow/static/media/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background 1.9a05295b.png",
+  "static/media/onboarding.css": "/Mellow/static/media/image 4.4bc17797.png",
   "static/media/home.css": "/Mellow/static/media/main-bg.0e46362f.png",
   "static/media/login.css": "/Mellow/static/media/loginpic.0d90c2a0.png",
   "static/media/artistreg.css": "/Mellow/static/media/aristreg pic.d3d3f612.png",
@@ -15,6 +15,6 @@
   "static/media/demobg1.jpg": "/Mellow/static/media/demobg1.cc5791e0.jpg",
   "static/css/main.e6943821.chunk.css.map": "/Mellow/static/css/main.e6943821.chunk.css.map",
   "index.html": "/Mellow/index.html",
-  "precache-manifest.bc4640d0ff911d040dff876969f0374e.js": "/Mellow/precache-manifest.bc4640d0ff911d040dff876969f0374e.js",
+  "precache-manifest.bfd32c5db318a61633a0e3a9a2f8cf4c.js": "/Mellow/precache-manifest.bfd32c5db318a61633a0e3a9a2f8cf4c.js",
   "service-worker.js": "/Mellow/service-worker.js"
 }
