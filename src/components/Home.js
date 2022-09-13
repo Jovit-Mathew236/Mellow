@@ -47,7 +47,7 @@ function Home() {
                         // console.log(info);
 
                         return (
-                            <button key={index} style={user ? null : { justifyContent: "center" }} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p> : null} {user ? 'Welcome ' + info.username : 'Login'} </button>
+                            <button key={index} style={user ? null : { justifyContent: "center" }} onClick={() => user ? navigate('/profile') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p> : null} {user ? 'Welcome ' + info.username : 'Login'} </button>
                         )
                     }) : <button style={user ? null : { justifyContent: "center" }} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>}
                     {/* <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/login')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button> */}
