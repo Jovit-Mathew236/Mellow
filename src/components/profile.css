@@ -48,7 +48,8 @@
 .profile-about-flex .profile-div .profile-pic {
     height: 100px;
     width: 100px;
-    background-size: contain;
+    /* background-size: contain; */
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;

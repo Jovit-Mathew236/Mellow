@@ -11,6 +11,9 @@ function EditProfile() {
 
     const [info, setInfo] = useState([])
     const [name, setName] = useState('')
+    const [image, setImage] = useState()
+    const [img, setImg] = useState([])
+    const [upImgURL, setUpImgURL] = useState([])
     const [location, setlocation] = useState('')
     const [expertise, setExpertise] = useState('')
     const [contact, setContact] = useState('')
@@ -30,7 +33,7 @@ function EditProfile() {
             })
             setInfo(alldocs)
         })
-    })
+    }, [firebase])
     return (
         <div>
             <div className="artist-reg">
@@ -54,6 +57,7 @@ function EditProfile() {
                             return null
                         }).map((info, index) => {
                             // console.log(info);
+
                             return (
                                 <div className="artist-reg-form" key={index}>
                                     <div className="form-fields">
@@ -120,7 +124,8 @@ function EditProfile() {
                                                     <button onClick={(e) => {
                                                         // if (name !== ''&& location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
                                                         e.preventDefault()
-
+                                                        setImg([...info.workImgs])
+                                                        console.log(img);
                                                         setDisply(disply === "none" ? "block" : "none")
 
                                                     }}>Next</button>
@@ -135,7 +140,7 @@ function EditProfile() {
 
                                         <form style={disply === "none" ? { display: "none" } : { display: "flex" }}>
                                             <div className='form-input-filed'>
-                                                <div style={{width: "80%"}}>
+                                                <div style={{ width: "80%" }}>
                                                     <label> Your Bio</label><br />
                                                     <textarea name="bio" id="bio" placeholder='Enter Name' required onChange={(e) => {
                                                         setAboutMe(e.target.value)
@@ -145,29 +150,60 @@ function EditProfile() {
                                                     }} value={info.AboutMe} ></textarea>
                                                 </div>
                                             </div>
+                                            <label style={{ marginLeft: "10%" }}> Add your photos of work</label><br />
                                             <div className='form-input-filed'>
                                                 <div>
-                                                    <label> Add your photos of work</label><br />
-                                                    <br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
+
+                                                    {/* <br /> */}
+                                                    <div className="input-img-div">
+                                                        <label htmlFor="customFile">Upload here</label>
+                                                        <input id="customFile" type="file" onChange={(e) => {
+                                                            setImage(e.target.files[0])
+
+                                                            setImg(e ? current  => [...current, URL.createObjectURL(e.target.files[0])] : null)
+                                                            // console.log(img);
+
+                                                            // imgurl1 = URL.createObjectURL(e.target.files[0])
+                                                            // console.log(imgurl1);
+                                                            // setImgname(e.target.files[0].name);
+
+                                                            firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
+                                                                ref.getDownloadURL().then((url) => {
+                                                                    // console.log(url);
+                                                                    setUpImgURL(current => [...current,url])
+                                                                    firebase.firestore().collection('Artist-info').doc(user.uid).update({
+                                                                        workImgs: upImgURL
+                                                                    })
+                                                                })
+                                                            })
+
+                                                            // console.log(e.target.file);
+                                                        }} style={{ height: '120px' }} name="name" placeholder='' required />
+                                                        {/* <p className='img-p' style={image ? { backgroundImage: `url(${imgURL4})` } : null}></p> */}
+                                                    </div>
                                                 </div>
                                                 <div>
-                                                    <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
+                                                    {/* <br /> */}
+                                                    <div className="input-img-div input-pic-div">
+
+                                                        <p className='img-p' style={image ? { backgroundImage: `url(${img[0]})` } : null}></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className='form-input-filed'>
                                                 <div>
-                                                    <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
+                                                    <br />
+                                                    <div className="input-img-div input-pic-div">
+
+                                                        <p className='img-p' style={image ? { backgroundImage: `url(${img[1]})` } : null}></p>
+                                                    </div>
                                                 </div>
                                                 <div>
-                                                    <br /><br />
-                                                    <input type="text" style={{ height: '120px' }} name="name" placeholder=''  />
-                                                    <div></div>
+                                                    <br /><div className="input-img-div input-pic-div">
 
+                                                        <p className='img-p' style={image ? { backgroundImage: `url(${img[2]})` } : null}></p>
+                                                    </div>
                                                 </div>
-
                                             </div>
                                             <button style={{ width: "90%", margin: "0px auto" }} onClick={(e) => {
                                                 if (name !== '' && location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
@@ -181,12 +217,13 @@ function EditProfile() {
                                                         WorkExperience: workExp,
                                                         AboutMe: aboutMe,
                                                         CreatedDate: date.toDateString(),
+                                                        workImgs: upImgURL,
                                                         userId: user.uid
                                                     }).catch((error) => {
                                                         console.log(error.message);
                                                     }).then(() => {
                                                         swal("Good job!", "You successfully  Submited!", "success");
-                                                        navigate('/onboarding')
+                                                        navigate('/profile')
                                                     }) : navigate('/login')
                                                 } else {
                                                     alert('Fill all the filed')

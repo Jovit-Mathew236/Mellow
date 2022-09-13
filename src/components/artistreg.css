@@ -61,7 +61,7 @@
 }
 
 .artist-reg-form .form-fields {
-    min-height: 80vh;
+    min-height: 85vh;
     width: inherit;
 }
 
@@ -107,8 +107,23 @@
 
 
 .img-p{
-    height: 120px;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 10px;
+}
+.form-input-filed .input-img-div{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed blue;
+    border-radius: 10px;
+    width: 190px;
+}
+.form-input-filed .input-pic-div{
+    border: 0px;
+    box-shadow: 0px 0px 4px 1px #a8a8a8b5;
 }

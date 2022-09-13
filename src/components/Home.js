@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useParallax } from 'react-scroll-parallax';
 import { useNavigate } from 'react-router-dom'
 // import Arrow from '../assets/Arrow'
+import { Parallax } from 'react-scroll-parallax';
 import Facebook from '../assets/icons/Facebook'
 import Linkedin from '../assets/icons/Linkedin'
 import SignOut from '../assets/icons/SignOut'
@@ -10,10 +12,11 @@ import './home.css'
 
 function Home() {
     const { firebase } = useContext(FirebaseContext)
-    const { user,setUserStatus } = useContext(AuthContext)
+    const { user, setUserStatus } = useContext(AuthContext)
     const navigate = useNavigate()
     // const [info, setInfo] = useState([])
     const [userInfo, setUserInfo] = useState([])
+    const { ref } = useParallax({ speed: 10 })
     // const test = user ? user.displayName : 'not worked'
     // console.log(test);
     // console.log(firebase);
@@ -33,23 +36,23 @@ function Home() {
             {/* Main intro section */}
             <div className="main-page-one">
                 <div className="nav-bar">
-                {user ? userInfo.filter((data) => {
-                    // console.log(data.id);
-                    if (data.id === user.uid) {
-                        // console.log(data);
-                        return data
-                    }
-                    return null
-                }).map((info, index) => {
-                    // console.log(info);
+                    {user ? userInfo.filter((data) => {
+                        // console.log(data.id);
+                        if (data.id === user.uid) {
+                            // console.log(data);
+                            return data
+                        }
+                        return null
+                    }).map((info, index) => {
+                        // console.log(info);
 
-                    return (
-                        <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${info.profilePic})`} : null}></p> : null} {user ? 'Welcome ' + info.username : 'Login'} </button>
+                        return (
+                            <button key={index} style={user ? null : { justifyContent: "center" }} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p> : null} {user ? 'Welcome ' + info.username : 'Login'} </button>
                         )
-                    }):<button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>}
+                    }) : <button style={user ? null : { justifyContent: "center" }} onClick={() => user ? navigate('/') : navigate('/signup')}>{user ? <p className='profile-pic-home' style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button>}
                     {/* <button style={user ? null : {justifyContent:"center"}} onClick={() => user ? navigate('/') : navigate('/login')}>{user ? <p className='profile-pic-home' style={user ? {backgroundImage:`url(${user.photoURL})`} : null}></p> : null} {user ? 'Welcome ' + user.displayName : 'Login'} </button> */}
                     {user ? <div className='logout-btn'>
-                        <p className='dropdown'><SignOut/> </p>
+                        <p className='dropdown'><SignOut /> </p>
                         <div className="dropdown-content">
                             <p onClick={() => {
                                 firebase.auth().signOut()
@@ -70,8 +73,8 @@ function Home() {
                             PageTraffic is the perfect choice.
                         </p> <br /> <br />
                         <div className="btns-introsection">
-                            <button onClick={()=>{user ? navigate('/onboarding') : navigate('/signup'); setUserStatus('Employer')}}>I want an artist</button>
-                            <button onClick={()=>{user ? navigate('/artistregistration') : navigate('/signup') ; setUserStatus('Participent')}}>I’m an artist</button>
+                            <button onClick={() => { user ? navigate('/onboarding') : navigate('/signup'); setUserStatus('Employer') }}>I want an artist</button>
+                            <button onClick={() => { user ? navigate('/artistregistration') : navigate('/signup'); setUserStatus('Participent') }}>I’m an artist</button>
                         </div>
                     </div>
                     <div className="pic-main-intro">
@@ -87,14 +90,16 @@ function Home() {
                         <h1>WHY US</h1> <br />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
                         <br /><br />
+                        {/* <Parallax speed={5}></Parallax> */}
                         <ul>
-                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
-                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
-                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
-                            <li> eiusmod tempor incididunt ut labore et dolore </li><br />
+                            <Parallax speed={5}><li> eiusmod tempor incididunt ut labore et dolore </li><br /></Parallax>
+                            <Parallax speed={4}><li> eiusmod tempor incididunt ut labore et dolore </li><br /></Parallax>
+                            <Parallax speed={4}><li> eiusmod tempor incididunt ut labore et dolore </li><br /></Parallax>
+                            <Parallax speed={4}><li> eiusmod tempor incididunt ut labore et dolore </li><br /></Parallax>
                         </ul>
+
                         <br /><br />
-                        <div className="data">
+                        <div ref={ref} className="data my-thing" >
                             <div className="artists">
                                 <h3>10K+</h3>
                                 <p>Total Artists</p>
@@ -109,21 +114,21 @@ function Home() {
                     </div>
 
                     <div className="box-why-us">
-                        <div className='box-sec-one'>
-                            <div className="box">
-                                <p className="box-img-odd"></p>
-                                <h2>doloremque </h2>
-                                <p>tis unde omnis iste natus error sit voluptatem</p>
-                                <p className="view-btn">view more</p>
+                            <div className='box-sec-one'>
+                                <div className="box">
+                                    <p className="box-img-odd"></p>
+                                    <h2>doloremque </h2>
+                                    <p>tis unde omnis iste natus error sit voluptatem</p>
+                                    <p className="view-btn">view more</p>
+                                </div>
+                                <div className="box box-even">
+                                    <p className="box-img"></p>
+                                    <h2>doloremque </h2>
+                                    <p>tis unde omnis iste natus error sit voluptatem</p>
+                                    <p className="view-btn">view more</p>
+                                </div>
                             </div>
-                            <div className="box box-even">
-                                <p className="box-img"></p>
-                                <h2>doloremque </h2>
-                                <p>tis unde omnis iste natus error sit voluptatem</p>
-                                <p className="view-btn">view more</p>
-                            </div>
-                        </div>
-                        <div className='box-sec-two'>
+                        <div className='box-sec-two' ref={ref}>
                             <div className="box box-even">
                                 <p className="box-img"></p>
                                 <h2>doloremque </h2>

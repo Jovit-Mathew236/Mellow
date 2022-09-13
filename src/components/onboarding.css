@@ -162,8 +162,9 @@ h1 {
 }
 
 .artists-infos .artist-row .artist .artist-avathar {
-    width: 40%;
-    background-size: contain;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
     border-radius: 50%;
     border: 3px solid white;
 }

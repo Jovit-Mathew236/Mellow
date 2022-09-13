@@ -13,10 +13,7 @@ function Artistreg() {
     const [info, setInfo] = useState([])
     // const [userInfo, setUserInfo] = useState([])
     const [image, setImage] = useState()
-    const [imgURL4, setImgURL4] = useState('')
-    const [imgURL1, setImgURL1] = useState('')
-    const [imgURL2, setImgURL2] = useState('')
-    const [imgURL3, setImgURL3] = useState('')
+    const [img, setImg] = useState([])
     const [upImgURL, setUpImgURL] = useState([])
     const [name, setName] = useState('')
     const [location, setlocation] = useState('')
@@ -146,33 +143,40 @@ function Artistreg() {
                                             <textarea name="bio" id="bio" placeholder='Enter Name' onChange={(e) => setAboutMe(e.target.value)} value={aboutMe} required></textarea>
                                         </div>
                                     </div>
+                                    <label style={{ marginLeft: "10%" }}> Add your photos of work</label><br />
                                     <div className='form-input-filed'>
                                         <div>
-                                            <label> Add your photos of work</label><br />
-                                            <br />
-                                            <label htmlFor="customFile">Upload here</label>
-                                            <input id="customFile" type="file" onChange={(e) => {
-                                                setImage(e.target.files[0])
-                                                setImgURL4(URL.createObjectURL(e.target.files[0]))
-                                                // imgurl1 = URL.createObjectURL(e.target.files[0])
-                                                // console.log(imgurl1);
-                                                // setImgname(e.target.files[0].name);
-                                                firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
-                                                    ref.getDownloadURL().then((url) => {
-                                                        // console.log(url);
-                                                        setUpImgURL(...upImgURL, url)
-                                                        firebase.firestore().collection('Artist-info').doc(user.uid).update({
-                                                            workImgs: upImgURL
+
+                                            {/* <br /> */}
+                                            <div className="input-img-div">
+                                                <label htmlFor="customFile">Upload here</label>
+                                                <input id="customFile" type="file" onChange={(e) => {
+                                                    setImage(e.target.files[0])
+                                                    setImg(e ? current => [...current,URL.createObjectURL(e.target.files[0])] : null)
+                                                    console.log(img);
+                                                    // imgurl1 = URL.createObjectURL(e.target.files[0])
+                                                    // console.log(imgurl1);
+                                                    // setImgname(e.target.files[0].name);
+
+                                                    firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
+                                                        ref.getDownloadURL().then((url) => {
+                                                            // console.log(url);
+                                                            setUpImgURL(current => [...current,url])
+                                                            firebase.firestore().collection('Artist-info').doc(user.uid).update({
+                                                                workImgs: upImgURL
+                                                            })
                                                         })
                                                     })
-                                                })
-                                                // console.log(e.target.file);
-                                            }} style={{ height: '120px' }} name="name" placeholder='' required />
-                                            <p className='img-p' style={image ? { backgroundImage: `url(${imgURL4})` } : null}></p>
+
+                                                    // console.log(e.target.file);
+                                                }} style={{ height: '120px' }} name="name" placeholder='' required />
+                                                {/* <p className='img-p' style={image ? { backgroundImage: `url(${imgURL4})` } : null}></p> */}
+                                            </div>
                                         </div>
                                         <div>
-                                            <br /><br />
-                                            <label htmlFor="customFile">Upload here</label>
+                                            {/* <br /> */}
+                                            <div className="input-img-div input-pic-div">
+                                                {/* <label htmlFor="customFile">Upload here</label>
                                             <input id="customFile" type="file" onChange={(e) => {
                                                 setImage(e.target.files[0])
                                                 setImgURL1(URL.createObjectURL(e.target.files[0]))
@@ -188,18 +192,20 @@ function Artistreg() {
                                                     })
                                                 })
                                                 // console.log(e.target.file);
-                                            }} style={{ height: '120px' }} name="name" placeholder='' required />
-                                            <p className='img-p' style={image ? { backgroundImage: `url(${imgURL1})` } : null}></p>
+                                            }} style={{ height: '120px' }} name="name" placeholder='' required /> */}
+                                                <p className='img-p' style={image ? { backgroundImage: `url(${img[0]})` } : null}></p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='form-input-filed'>
                                         <div>
-                                            <br /><br />
-                                            <label htmlFor="customFile">Upload here</label>
+                                            <br />
+                                            <div className="input-img-div input-pic-div">
+                                                {/* <label htmlFor="customFile">Upload here</label>
                                             <input id="customFile" type="file" onChange={(e) => {
                                                 setImage(e.target.files[0])
-                                                setImgURL2(URL.createObjectURL(e.target.files[0]))
-                                                // imgurl3 = URL.createObjectURL(e.target.files[0])
+                                                setImgURL1(URL.createObjectURL(e.target.files[0]))
+                                                // imgurl2 = URL.createObjectURL(e.target.files[0])
                                                 // setImgname(e.target.files[0].name);
                                                 firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
                                                     ref.getDownloadURL().then((url) => {
@@ -211,17 +217,17 @@ function Artistreg() {
                                                     })
                                                 })
                                                 // console.log(e.target.file);
-                                                
-                                            }} style={{ height: '120px' }} name="name" placeholder='' required />
-                                            <p className='img-p' style={image ? { backgroundImage: `url(${imgURL2})` } : null}></p>
+                                            }} style={{ height: '120px' }} name="name" placeholder='' required /> */}
+                                                <p className='img-p' style={image ? { backgroundImage: `url(${img[1]})` } : null}></p>
+                                            </div>
                                         </div>
                                         <div>
-                                            <br /><br />
-                                            <label htmlFor="customFile">Upload here</label>
+                                            <br /><div className="input-img-div input-pic-div">
+                                                {/* <label htmlFor="customFile">Upload here</label>
                                             <input id="customFile" type="file" onChange={(e) => {
                                                 setImage(e.target.files[0])
-                                                setImgURL3(URL.createObjectURL(e.target.files[0]))
-                                                // imgurl4 = URL.createObjectURL(e.target.files[0])
+                                                setImgURL1(URL.createObjectURL(e.target.files[0]))
+                                                // imgurl2 = URL.createObjectURL(e.target.files[0])
                                                 // setImgname(e.target.files[0].name);
                                                 firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
                                                     ref.getDownloadURL().then((url) => {
@@ -233,8 +239,9 @@ function Artistreg() {
                                                     })
                                                 })
                                                 // console.log(e.target.file);
-                                            }} style={{ height: '120px' }} name="name" placeholder='' required />
-                                            <p className='img-p' style={image ? { backgroundImage: `url(${imgURL3})` } : null}></p>.
+                                            }} style={{ height: '120px' }} name="name" placeholder='' required /> */}
+                                                <p className='img-p' style={image ? { backgroundImage: `url(${img[2]})` } : null}></p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='sub-btn'>
@@ -250,6 +257,7 @@ function Artistreg() {
                                                     WorkExperience: workExp,
                                                     AboutMe: aboutMe,
                                                     CreatedDate: date.toDateString(),
+                                                    workImgs: upImgURL,
                                                     userId: user.uid
                                                 }).catch((error) => {
                                                     console.log(error.message);
