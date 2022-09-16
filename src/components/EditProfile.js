@@ -123,9 +123,9 @@ function EditProfile() {
                                                     <div></div>
                                                     <button onClick={(e) => {
                                                         // if (name !== ''&& location !== '' && expertise !== '' && contact !== '' && address !== '' && workExp !== '') {
-                                                        e.preventDefault()
-                                                        setImg([...info.workImgs])
-                                                        console.log(img);
+                                                        // e.preventDefault()
+                                                        // setImg([...info.workImgs])
+                                                        // console.log(img);
                                                         setDisply(disply === "none" ? "block" : "none")
 
                                                     }}>Next</button>

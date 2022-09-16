@@ -1,3 +1,21 @@
+.restricted_layer {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1a1a1aa3;
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
 .user-profile-contents {
     padding: 0px 0px;
     margin: 30px 50px;

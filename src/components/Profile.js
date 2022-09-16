@@ -17,6 +17,7 @@ function Profile() {
   const { firebase } = useContext(FirebaseContext)
   const { user, userStatus } = useContext(AuthContext)
   const navigate = useNavigate()
+  // const [restrictStatus, setRestrictStatus] = useState(null)
   const [info, setInfo] = useState([])
   const [userInfo, setUserInfo] = useState([])
   const [image, setImage] = useState()
@@ -58,7 +59,7 @@ function Profile() {
           return null
         }).map((info, index) => {
           // console.log(info);
-
+          // setRestrictStatus(info.Restriction_status)
           return (
             <img key={index} src={image ? URL.createObjectURL(image) : info.profilePic} alt="" />
           )
@@ -83,12 +84,14 @@ function Profile() {
           {user ? info.filter((data) => {
             // console.log(data.id);
             if (data.id === user.uid) {
-              // console.log(data);
+              // console.log(data.Restriction_status);
+
               return data
             }
             return null
           }).map((info, index) => {
             // console.log(info);
+
             // console.log(image);
             return (
               <div className="profile-div" key={index}>
@@ -103,6 +106,7 @@ function Profile() {
                   // console.log(info === null ? "nop": "yeah");
 
                   return (
+
                     <p key={index} className="profile-pic" style={image ? { backgroundImage: `url(${URL.createObjectURL(image)})` } : { backgroundImage: `url(${info.profilePic})` }}>
                       <div className='image-input'>
                         <label htmlFor="customFile" className="custom-file-upload"><Camere /> </label>
@@ -123,7 +127,9 @@ function Profile() {
                     </p>
                   )
                 })}
-
+                {info.Restriction_status ? <div className='restricted_layer'>
+                  <p>Your Account is restricted</p>
+                </div> : null}
                 <br />
                 <h2 className="name">{info.Name}</h2>
                 <p className="user-expertise">{info.Expertise}  ·  {info.WorkExperience}+ Years of experience</p>
@@ -137,7 +143,7 @@ function Profile() {
             )
           }) : navigate('/')}
 
-          {user ?info.filter((data) => {
+          {user ? info.filter((data) => {
             // console.log(data.id);
             if (data.id === user.uid) {
               // console.log(data);
@@ -159,7 +165,7 @@ function Profile() {
                 </div>
               </div>
             )
-          }): navigate('/')}
+          }) : navigate('/')}
 
         </div>
         <br /><br /><br />

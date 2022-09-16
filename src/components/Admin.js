@@ -3,11 +3,12 @@ import Option from '../assets/icons/Option'
 import { AuthContext, FirebaseContext } from '../store/Contexts'
 import "./onboarding.css"
 import "./admin.css"
+import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom'
 
 function Admin() {
   const { firebase } = useContext(FirebaseContext)
-  const { user,setUserId } = useContext(AuthContext)
+  const { user, setUserId } = useContext(AuthContext)
   const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState([])
   const [info, setInfo] = useState([])
@@ -30,9 +31,9 @@ function Admin() {
           id: infos.id
         }
       })
-      setUserInfo(alldocs)
+      setUserInfo(alldocs) 
     })
-  }, [firebase])
+  })
 
   const handleClick = (id) => {
     setMyStyle((prevState) => ({
@@ -85,16 +86,35 @@ function Admin() {
 
                 ) => handleClick(index)}>
                   <p className='freelancer-option'><Option /></p>
-                  <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%"  }}>
-                    <p  onClick={()=>{
-                      // exp.updateUser(exp.userId, { disabled: true })
-
-                    }}>Restrict</p>
-                    <p>Ban</p>
+                  <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%" }}>
                     <p onClick={() => {
-                                setUserId(exp.userId)
-                                navigate('/userprofileview')
-                            }}>Download profile</p>
+                      // exp.updateUser(exp.userId, { disabled: true })
+                      // console.log(!exp.Restriction_status);
+                      firebase.firestore().collection('Artist-info').doc(exp.userId).update({
+                        Restriction_status: !exp.Restriction_status
+                      }).catch((error) => {
+                        console.log(error.message);
+                      }).then(() => {
+                        swal("Good job!", "You successfully  restricted!", "success");
+                      })
+
+                    }}>{exp.Restriction_status === true ? "Unrestrict" : "Restrict"}</p>
+                    <p onClick={() => {
+                      firebase.firestore().collection('Artist-info').doc(exp.userId).delete().catch((error) => {
+                        console.log(error.message);
+                      }).then(() => {
+                        firebase.firestore().collection('user').doc(exp.userId).delete().catch((error) => {
+                          console.log(error.message);
+                        })
+                      }).then(() => {
+                        swal("Good job!", "You successfully  restricted!", "success");
+                      })
+
+                    }}>Ban</p>
+                    <p onClick={() => {
+                      setUserId(exp.userId)
+                      navigate('/userprofileview')
+                    }}>Download profile</p>
                   </div>
                 </div>
               </div>
@@ -108,25 +128,26 @@ function Admin() {
         <div className="freelancers">
           {info.map((exp, index) => {
             return (
-              <div key={index} className="freelancer">
-                {userInfo.filter((userinfo) => {
-                  if (exp.userId === userinfo.id) {
-                    // console.log(userinfo.profilePic)
-                    return userinfo
-                  }
-                  return null
-                }).map((info, index) => {
-                  // console.log(info);
-                  return (
+
+              userInfo.filter((userinfo) => {
+                if (exp.userId === userinfo.id) {
+                  // console.log(exp.Restriction_status)
+                  return exp.Restriction_status === true ? userinfo : null
+                }
+                return null
+              }).map((info, index) => {
+                // console.log(info);
+                return (
+                  <div key={index} className="freelancer">
                     <p key={index} className="profile-pic" style={user ? { backgroundImage: `url(${info.profilePic})` } : null}></p>
-                  )
-                })}
-                {/* <p className="profile-pic" style={user ? { backgroundImage: `url(${user.photoURL})` } : null}></p> */}
-                <p className='name'>{exp.Name}</p>
-                <div className='freelancer-option-btn'>
-                  <p className='freelancer-option'><Option /></p>
-                </div>
-              </div>
+                    <p className='name'>{exp.Name}</p>
+                    <div className='freelancer-option-btn'>
+                      <p className='freelancer-option'><Option /></p>
+                    </div>
+                  </div>
+                )
+              })
+
             )
           })}
         </div>
