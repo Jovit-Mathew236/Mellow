@@ -152,7 +152,7 @@ function Artistreg() {
                                                 <label htmlFor="customFile">Upload here</label>
                                                 <input id="customFile" type="file" onChange={(e) => {
                                                     setImage(e.target.files[0])
-                                                    setImg(e ? current => [...current,URL.createObjectURL(e.target.files[0])] : null)
+                                                    setImg(e ? current => [...current, URL.createObjectURL(e.target.files[0])] : null)
                                                     console.log(img);
                                                     // imgurl1 = URL.createObjectURL(e.target.files[0])
                                                     // console.log(imgurl1);
@@ -161,7 +161,7 @@ function Artistreg() {
                                                     firebase.storage().ref(`${user.uid}/work/${e.target.files[0].name}/`).put(e.target.files[0]).then(({ ref }) => {
                                                         ref.getDownloadURL().then((url) => {
                                                             // console.log(url);
-                                                            setUpImgURL(current => [...current,url])
+                                                            setUpImgURL(current => [...current, url])
                                                             firebase.firestore().collection('Artist-info').doc(user.uid).update({
                                                                 workImgs: upImgURL
                                                             })
@@ -258,7 +258,9 @@ function Artistreg() {
                                                     AboutMe: aboutMe,
                                                     CreatedDate: date.toDateString(),
                                                     workImgs: upImgURL,
-                                                    userId: user.uid
+                                                    userId: user.uid,
+                                                    Restriction_status: false,
+                                                    Report_status: false
                                                 }).catch((error) => {
                                                     console.log(error.message);
                                                 }).then(() => {

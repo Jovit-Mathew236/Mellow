@@ -31,7 +31,7 @@ function Admin() {
           id: infos.id
         }
       })
-      setUserInfo(alldocs) 
+      setUserInfo(alldocs)
     })
   }, firebase)
 
@@ -87,18 +87,20 @@ function Admin() {
                 ) => handleClick(index)}>
                   <p className='freelancer-option'><Option /></p>
                   <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%" }}>
-                    <p onClick={() => {
-                      // exp.updateUser(exp.userId, { disabled: true })
-                      // console.log(!exp.Restriction_status);
-                      firebase.firestore().collection('Artist-info').doc(exp.userId).update({
-                        Restriction_status: !exp.Restriction_status
-                      }).catch((error) => {
-                        console.log(error.message);
-                      }).then(() => {
-                        swal("Good job!", "You successfully  restricted!", "success");
-                      })
+                    <p
+                    // onClick={() => {
+                    //   // exp.updateUser(exp.userId, { disabled: true })
+                    //   // console.log(!exp.Restriction_status);
+                    //   firebase.firestore().collection('Artist-info').doc(exp.userId).update({
+                    //     Restriction_status: !exp.Restriction_status
+                    //   }).catch((error) => {
+                    //     console.log(error.message);
+                    //   }).then(() => {
+                    //     swal("Good job!", "You successfully  restricted!", "success");
+                    //   })
 
-                    }}>{exp.Restriction_status === true ? "Unrestrict" : "Restrict"}</p>
+                    // }}
+                    >{exp.Restriction_status === true ? "Unrestrict" : "Restrict"}</p>
                     <p onClick={() => {
                       firebase.firestore().collection('Artist-info').doc(exp.userId).delete().catch((error) => {
                         console.log(error.message);
@@ -132,7 +134,7 @@ function Admin() {
               userInfo.filter((userinfo) => {
                 if (exp.userId === userinfo.id) {
                   // console.log(exp.Restriction_status)
-                  return exp.Restriction_status === true ? userinfo : null
+                  return exp.Report_status === true ? userinfo : null
                 }
                 return null
               }).map((info, index) => {
@@ -143,6 +145,34 @@ function Admin() {
                     <p className='name'>{exp.Name}</p>
                     <div className='freelancer-option-btn'>
                       <p className='freelancer-option'><Option /></p>
+                      <div className="option-content" style={{ opacity: myStyle[`${index}`] ? "100%" : "0%" }}>
+                        <p
+                          onClick={() => {
+                            // exp.updateUser(exp.userId, { disabled: true })
+                            // console.log(!exp.Restriction_status);
+                            firebase.firestore().collection('Artist-info').doc(exp.userId).update({
+                              Restriction_status: !exp.Restriction_status
+                            }).catch((error) => {
+                              console.log(error.message);
+                            }).then(() => {
+                              swal("Good job!", "You successfully  restricted!", "success");
+                            })
+
+                          }}
+                        >{exp.Restriction_status === true ? "Unrestrict" : "Restrict"}</p>
+                        <p onClick={() => {
+                          firebase.firestore().collection('Artist-info').doc(exp.userId).delete().catch((error) => {
+                            console.log(error.message);
+                          }).then(() => {
+                            firebase.firestore().collection('user').doc(exp.userId).delete().catch((error) => {
+                              console.log(error.message);
+                            })
+                          }).then(() => {
+                            swal("Good job!", "You successfully  restricted!", "success");
+                          })
+
+                        }}>Ban</p>
+                      </div>
                     </div>
                   </div>
                 )

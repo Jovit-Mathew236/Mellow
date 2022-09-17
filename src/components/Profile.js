@@ -159,7 +159,7 @@ function Profile() {
                   // exp.updateUser(exp.userId, { disabled: true })
                   // console.log(!exp.Restriction_status);
                   firebase.firestore().collection('Artist-info').doc(info.userId).update({
-                    Restriction_status: !info.Restriction_status
+                    Report_status: !info.Report_status
                   }).catch((error) => {
                     console.log(error.message);
                   }).then(() => {
