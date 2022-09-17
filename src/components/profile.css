@@ -211,3 +211,12 @@ input[type="file"] {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.report_btn button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #5f6c97;
+    color: white;
+    position: absolute;
+    right: 80px;
+}

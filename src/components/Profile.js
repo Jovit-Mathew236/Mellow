@@ -12,6 +12,7 @@ import SignOut from '../assets/icons/SignOut'
 import Phone from '../assets/icons/Phone'
 import Whatsapp from '../assets/icons/Whatsapp'
 import Mail from '../assets/icons/Mail'
+import swal from 'sweetalert';
 
 function Profile() {
   const { firebase } = useContext(FirebaseContext)
@@ -154,6 +155,18 @@ function Profile() {
             // console.log(info);
             return (
               <div className="about-div" key={index}>
+                {userStatus === "Participent" ? null : <div className="report_btn"><button onClick={() => {
+                  // exp.updateUser(exp.userId, { disabled: true })
+                  // console.log(!exp.Restriction_status);
+                  firebase.firestore().collection('Artist-info').doc(info.userId).update({
+                    Restriction_status: !info.Restriction_status
+                  }).catch((error) => {
+                    console.log(error.message);
+                  }).then(() => {
+                    swal("Good job!", "You successfully  Reported!", "success");
+                  })
+
+                }}>Report</button></div>}
                 <h2>About me</h2>
                 <p>{info.AboutMe}</p>
                 <br />

@@ -33,7 +33,7 @@ function Admin() {
       })
       setUserInfo(alldocs) 
     })
-  })
+  }, firebase)
 
   const handleClick = (id) => {
     setMyStyle((prevState) => ({
